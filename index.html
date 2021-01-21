@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control your gains</title>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <!-- JQuery last version-->
+  <script src="src/js/jquery.min.js"></script>
+  <script src="src/js/script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <h1>Control your gains</h1>
+          <p>Bienvenido al sitio dónde podrás llevar una gestión ordenada de tus inversiones en criptomonedas</p>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#!">Home</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#!">Trading<span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#!">Holding<span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#!">DeFi<span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>  
+      </div>  
+    </div> 
+  </header>
+  </div>  
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4">   
+          <form name="my-form" action="pages/results.html" target="_self" method="post" 
+          enctype="multipart/form-data" id="contactForm">
+          <label for="userOption">Tipo de inversón</label>
+          <select id="userOption" name="userOption">
+            <option value="0">Seleccione una opción</option>
+            <option value="trading">Trading</option>
+            <option value="holding">Holding</option>
+            <option value="defi">DeFi</option>
+          </select>
+          <label for="userName">Token</label>
+          <input type="text" id="userName" name="userName" placeholder="¿Qué token compraste">
+          <label for="buyPrice">¿A qué precio compraste?</label>
+          <input type="number" id="buyPrice" name="buyPrice" placeholder="Precio de compra">
+          <label for="sellPrice">¿A qué precio vendiste?</label>
+          <input type="number" id="sellPrice" name="sellPrice" placeholder="Precio de venta">
+          <label id="mailResult">¿Te interesa recibir el resultado en tu correo?</label>
+          <input type="radio" id="mailYes" name="mailYes" value="y">
+          <label for="mailYes">Yes</label>
+          <input type="radio" id="mailNo" name="mailNo" value="n">
+          <label for="mailNo">No</label>
+          <label for="userMail" id="mail">Correo</label>
+          <input type="text" id="userMail" name="userMail" placeholder="¿Cuál es tu correo?">
+          <button id="deleteMessage" type="reset">Borrar datos</button>
+          <button id="sendMessage" type="submit">Obtener resultado</button>
+          </form>
+        </div> 
+      </div>
+    </div>     
+  </main>
+  <footer>
+
+  </footer>
+  <script src="src/js/bootstrap.js"></script>
+</body>
+</html>

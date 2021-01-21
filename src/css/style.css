@@ -1,0 +1,13 @@
+* {
+  margin: 5px;
+}
+#mailResult {
+  display: block;
+}
+#mail {
+  display: block;
+}
+button {
+  display: block;
+  margin-top: 3px;
+}
