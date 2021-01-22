@@ -8,7 +8,10 @@
   <link rel="stylesheet" href="src/css/style.css">
   <!-- JQuery last version-->
   <script src="src/js/jquery.min.js"></script>
-  <script src="src/js/script.js"></script>
+  <script defer src="src/js/DOMBuilder.js"></script>
+  <!--<script defer src="src/js/inversionApp.js"></script>-->
+  <script defer src="src/js/data.js"></script>
+  <script defer src="src/js/app.js"></script>
 </head>
 <body>
   <header>
@@ -52,32 +55,11 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 offset-lg-4">   
-          <form name="my-form" action="pages/results.html" target="_self" method="post" 
-          enctype="multipart/form-data" id="contactForm">
-          <label for="userOption">Tipo de inversón</label>
-          <select id="userOption" name="userOption">
-            <option value="0">Seleccione una opción</option>
-            <option value="trading">Trading</option>
-            <option value="holding">Holding</option>
-            <option value="defi">DeFi</option>
-          </select>
-          <label for="userName">Token</label>
-          <input type="text" id="userName" name="userName" placeholder="¿Qué token compraste">
-          <label for="buyPrice">¿A qué precio compraste?</label>
-          <input type="number" id="buyPrice" name="buyPrice" placeholder="Precio de compra">
-          <label for="sellPrice">¿A qué precio vendiste?</label>
-          <input type="number" id="sellPrice" name="sellPrice" placeholder="Precio de venta">
-          <label id="mailResult">¿Te interesa recibir el resultado en tu correo?</label>
-          <input type="radio" id="mailYes" name="mailYes" value="y">
-          <label for="mailYes">Yes</label>
-          <input type="radio" id="mailNo" name="mailNo" value="n">
-          <label for="mailNo">No</label>
-          <label for="userMail" id="mail">Correo</label>
-          <input type="text" id="userMail" name="userMail" placeholder="¿Cuál es tu correo?">
-          <button id="deleteMessage" type="reset">Borrar datos</button>
-          <button id="sendMessage" type="submit">Obtener resultado</button>
-          </form>
+        <div class="col-lg-6 offset-lg-3" id="message">   
+          <div class="row">
+            <div class="col-lg-6 offset-lg-3" id="calculate">  
+            </div>
+          </div> 
         </div> 
       </div>
     </div>     
