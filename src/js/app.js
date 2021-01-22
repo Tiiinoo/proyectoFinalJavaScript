@@ -26,19 +26,23 @@ function buildCoinsOption(coins) {
 function buildCoinCalculator() {
   
   const htmlDiv = `
-    <div id="calculator">
+    <div id="calculator" class="coinsOption">
       <fieldset>
-        <form id="calculate-form">
+        <form id="calculateForm">
           <input type="number" name="cantidad" placeholder="Cantidad comprada">
           <input type="number" name="precioCompra" placeholder="Precio de compra">
-          <button type="submit" id="btnCalculate">Calcular retorno</button>
-        </form>
+          <button id="btnCalculate" class="calculateButton">Calcular retorno + ${coins.id}</button>
+          <p id="resultMessage"></p>        
+          </form>
       </fieldset>  
     </div>
   `;
 
   return htmlDiv;
 }
+
+
+
 
 function onSelectClick(event) {
   const coinID = event.target.dataset.id;
@@ -52,22 +56,23 @@ function onSelectClick(event) {
 
   selectedCoins.push(selectedCoin);
   
-  buildCalculator(selectedCoin);
+  buildCalculator();
 
 }
 
-function buildCalculator(htmlDiv) {
-  selectedCoins.forEach(function(coin){
-    const calculator = buildCoinCalculator(htmlDiv);
+function buildCalculator() {
+    const lastCoin = selectedCoin[selectedCoin.length - 1];
+    const calculator = buildCoinCalculator(lastCoin);
     calculateContainer.innerHTML += calculator;
-  })
-}
+  }
+
 
 const DOMBuilder = new DomBuilder();
 
 let selectedCoins = [];
 
-window.addEventListener('load', function() {
+
+//window.addEventListener(//'load', function() {
 
   const messageContainer = document.getElementById('message');
   const calculateContainer = document.getElementById('calculate');
@@ -84,4 +89,4 @@ coinsButton.forEach(function(coinsButton){
   coinsButton.addEventListener('click', onSelectClick)
 })
 
-});
+//});
