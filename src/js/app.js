@@ -50,21 +50,15 @@ function onSelectClick(event) {
 
     return coin;
     }
-
-    function saveonLocalStorage() {
-      localStorage.setItem('Coinselection', JSON.stringify(coinID));
-    }
-  
-    function loadLocalStorage() {
-      if(localStorage.getItem('Coinselection')) {
-        return JSON.parse(localStorage.getItem('Coinselection'));
-      } else {
-        return[];
-      }
-    }
+    saveonLocalStorage();
   })
 
   selectedCoins.push(selectedCoin);
+
+  function saveonLocalStorage() {
+    localStorage.setItem('Coinselection', JSON.stringify(selectedCoins));
+    }
+  
   
   buildCalculator();
 
@@ -82,7 +76,7 @@ const DOMBuilder = new DomBuilder();
 let selectedCoins = [];
 
 
-//window.addEventListener(//'load', function() {
+
 
   const messageContainer = document.getElementById('message');
   const calculateContainer = document.getElementById('calculate');
@@ -99,4 +93,10 @@ coinsButton.forEach(function(coinsButton){
   coinsButton.addEventListener('click', onSelectClick)
 })
 
-//});
+window.addEventListener('load', function() {
+  if(localStorage.getItem('Coinselection')) {
+    selectedCoins = JSON.parse(localStorage.getItem('Coinselection'));
+    console.log(selectedCoins)
+  }
+});
+
