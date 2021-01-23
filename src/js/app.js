@@ -42,8 +42,6 @@ function buildCoinCalculator() {
 }
 
 
-
-
 function onSelectClick(event) {
   const coinID = event.target.dataset.id;
 
@@ -51,6 +49,18 @@ function onSelectClick(event) {
     if(coin.id == coinID){
 
     return coin;
+    }
+
+    function saveonLocalStorage() {
+      localStorage.setItem('Coinselection', JSON.stringify(coinID));
+    }
+  
+    function loadLocalStorage() {
+      if(localStorage.getItem('Coinselection')) {
+        return JSON.parse(localStorage.getItem('Coinselection'));
+      } else {
+        return[];
+      }
     }
   })
 
