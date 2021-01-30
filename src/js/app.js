@@ -6,7 +6,7 @@ function buildCoinsOption(coins) {
  
   const title = DOMBuilder.h2(coins.name,'coinsName');
   
-  //const image = DOMBuilder.img(coins.img); No puedo cargar la imagen local desde el JSON
+  const image = DOMBuilder.img(coins.img);
  
   const description = DOMBuilder.p(coins.description, "coinsDescription");
   
@@ -16,7 +16,7 @@ function buildCoinsOption(coins) {
 
  
   div.appendChild(title);
-  //div.appendChild(image);
+  div.appendChild(image);
   div.appendChild(description);
   div.appendChild(price);
   div.appendChild(button);
