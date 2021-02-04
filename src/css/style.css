@@ -1,5 +1,5 @@
 * {
-  margin: 1px;
+  margin: 5px;
 }
 h1 {
   text-align: center;
@@ -7,6 +7,9 @@ h1 {
 .imageChoice {
   width: 80px;
   height: auto;
+}
+#mainNav, #selectionTitle, #investmentChoices, #tradingTable, #holdingTable {
+  margin-bottom: 25px;
 }
 #tradeNumbers, #holdingNumbers {
   text-align: -webkit-center; 

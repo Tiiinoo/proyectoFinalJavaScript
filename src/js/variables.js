@@ -1,62 +1,93 @@
 let tradingButton = document.getElementById('tradingButton');
-console.log(tradingButton)
 let holdingButton = document.getElementById('holdingButton');
-console.log(holdingButton)
 let defiButton = document.getElementById('defiButton');
-console.log(defiButton)
+let tradingTable = document.getElementById('tradingTable');
+let holdingTable = document.getElementById('holdingTable');
 
 
+tradingButton.onclick = crearTradingTable;
+holdingButton.onclick = crearHoldingTable;
+// defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
 
-function buildCoinOptions() {
-  
-    const htmlDiv = `
-            
+function crearTradingTable() {
+
+    let tableTrade = ` 
+                      <thead class="thead-light">
+                      <tr>
+                        <th>Moneda</th>
+                        <th>Logo</th>
+                        <th>Descripción</th>
+                        <th>Precio de compra</th>
+                        <th>Precio de venta</th>
+                        <th>Cantidad</th>
+                        <th>Calcular</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">
+                          <select id="coinChoice" name="coinChoice">
+                            <option value="0">Elegí tu moneda</option>
+                            <option value="1">BTC</option>
+                            <option value="2">ETH</option>
+                            <option value="3">DOT</option>
+                            <option value="4">ADA</option>
+                            <option value="5">CAKE</option>
+                            <option value="6">XVS</option>
+                          </select>
+                        </th>
+                        <td><img class="imageChoice" src="images/BTC.jpeg"></td>
+                        <td>Bitcoin's native coin, the first one.</td>
+                        <td><input type="number" placeholder="Precio de compra"></td>
+                        <td><input type="number" placeholder="Precio de venta"></td>
+                        <td><input type="number" placeholder="Cantidad"></td>
+                        <td><button class="btn-outline-success calculateButton">Calcular trade</button></td>
+                      </tr>
+                    </tbody>
+    
     `;
-       return htmlDiv;
-  }
+      tradingTable.innerHTML = tableTrade;
+      return tableTrade;
+}
 
+function crearHoldingTable() {
   
-
-//   investmentChoice.onclick = function() {
-//       let newDiv = document.createElement('input');
-//       let newButton = document.createElement('button');
-//       let divloco = document.createElement('img');
-      
-//       newDiv.setAttribute('type', 'text');
-//       newButton.textContent= 'Sí mami, mostrame';
-//       newButton.classList.add('btn-outline-success', 'd-block');
-//       divloco.src = coins.img;
-//       divloco.classList.add('bg-blue');
-//       calculateBox.appendChild(newDiv);
-//       calculateBox.appendChild(newButton);
-//       calculateBox.appendChild(divloco)
-//   }
-
-  function buildCalculator() {
-    // const calculator = buildCoinOption();
-    // calculateBox.innerHTML += calculator;
+    let tableHold = `
+                    <thead class="thead-light">
+                    <tr>
+                      <th>Moneda</th>
+                      <th>Logo</th>
+                      <th>Descripción</th>
+                      <th>Precio de compra</th>
+                      <th>Precio actual</th>
+                      <th>Cantidad</th>
+                      <th>Calcular</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <select id="coinChoice" name="coinChoice">
+                          <option value="0">Elegí tu moneda</option>
+                          <option value="1">BTC</option>
+                          <option value="2">ETH</option>
+                          <option value="3">DOT</option>
+                          <option value="4">ADA</option>
+                          <option value="5">CAKE</option>
+                          <option value="6">XVS</option>
+                        </select>
+                      </th>
+                      <td><img class="imageChoice" src="images/BTC.jpeg"></td>
+                      <td>Bitcoin's native coin, the first one.</td>
+                      <td><input type="number" placeholder="Precio de compra"></td>
+                      <td>$37.000</td>
+                      <td><input type="number" placeholder="Cantidad"></td>
+                      <td><button class="btn-outline-success calculateButton">Calcular hold</button></td>
+                    </tr>
+                  </tbody>
+    `;
+      holdingTable.innerHTML = tableHold;
+      return tableHold;
   }
 
-// function onClick() {
-//     alert('funciono');
-// }
-
-// const choiseButton = document.querySelectorAll('.choiseButton');
-// choiseButton.forEach(function(choiseButton){
-//     choiseButton.addEventListener('click', onClick);
-// });
-
-
-// choiseButton.onClick();
-
-// document.getElementById('tradingButton').addEventListener('click', loquita);
-
-function loquita() {
-    alert('Me pongo loco');
-};
-
-// const investmentTrading = document.querySelectorAll('.choiceButton');
-// investmentTrading.forEach(function(investmentTrading){
-//     investmentTrading.addEventListener('click', loquita);
-// });
 
