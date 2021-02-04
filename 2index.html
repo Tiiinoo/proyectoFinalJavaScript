@@ -6,11 +6,12 @@
   <title>Control your gains</title>
   <link rel="stylesheet" href="src/css/bootstrap.min.css">
   <link rel="stylesheet" href="src/css/style.css">
+  <script defer src="src/js/data.js"></script>
+  <script defer src="src/js/"></script>
   <!-- <script src="src/js/DOMBuilder.js"></script> -->
   <!--<script defer src="src/js/inversionApp.js"></script>-->
-  <script src="src/js/data.js"></script>
+  
   <!-- <script defer src="src/js/app.js"></script> -->
-  <script defer src="src/js/testing.js"></script>
   <!-- JQuery last version-->
   <script src="src/js/jquery.min.js"></script>
 </head>
@@ -54,53 +55,176 @@
   </header>
   </div>  
   <main>
-    <div class="input-group mb-3 col-lg-6 offset-lg-3 d-flex justify-content-center">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <span class="badge badge-success">Selecciona el tipo de inversión sobre el que querés calcular tus retornos</span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div id="selectionTitle">
+          <span class="badge badge-secondary">Selecciona el tipo de inversión sobre el que querés calcular tus retornos</span>
         </div>
-        <div class="btn col-lg-6 offset-lg-3" role="group" aria-label="Basic example">
+      </div>
+      <div class="row justify-content-center">   
+        <div id="investmentChoices" role="group" aria-label="Basic example">
           <button id="tradingButton" type="button" class="btn-outline-success choiseButton">Trading</button>
           <button id="holdingButton" type="button" class="btn-outline-success choiseButton">Holding</button>
           <button id="defiButton" type="button" class="btn-outline-success choiseButton">DeFi</button>
         </div>
       </div>
-      <div id="calculateBox">
+      <div class="row justify-content-center">
+        <div id="calculateBox">
 
-      </div>
-      <!-- <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <span class="badge badge-success">Selecciona la moneda en la cual invertiste</span>
-        </div>        
-        <div class="btn btn-group col-lg-6 offset-lg-3" role="group" aria-label="Basic example">
-          <button type="button" class="btn-success">BTC</button>
-          <button type="button" class="btn-success">ETH</button>
-          <button type="button" class="btn-success">DOT</button>
-          <button type="button" class="btn-success">DAT</button>
-          <button type="button" class="btn-success">CAKE</button>
-          <button type="button" class="btn-success">XVS</button>
         </div>
-      </div>   -->
-      <div class="row">
-        <div id="calculate" class="d-flex justify-content-center">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title
-                and make up the bulk of the card's content.
-              </p>
-              <button type="button" class="btn-outline-success">Calcular</button>
-              <button type="reset" class="btn-outline-success">Borrar datos</button>
+      </div>
+      <div class="row justify-content-center">
+        <table id="tradingTable" class="table table-responsive">
+          <thead class="thead-light">
+            <tr>
+              <th>Moneda</th>
+              <th>Logo</th>
+              <th>Descripción</th>
+              <th>Precio de compra</th>
+              <th>Precio de venta</th>
+              <th>Cantidad</th>
+              <th>Calcular</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <select id="coinChoice" name="coinChoice">
+                  <option value="0">Elegí tu moneda</option>
+                  <option value="1">BTC</option>
+                  <option value="2">ETH</option>
+                  <option value="3">DOT</option>
+                  <option value="4">ADA</option>
+                  <option value="5">CAKE</option>
+                  <option value="6">XVS</option>
+                </select>
+              </th>
+              <td><img class="imageChoice" src="images/BTC.jpeg"></td>
+              <td>Bitcoin's native coin, the first one.</td>
+              <td><input type="number" placeholder="Precio de compra"></td>
+              <td><input type="number" placeholder="Precio de venta"></td>
+              <td><input type="number" placeholder="Cantidad"></td>
+              <td><button class="btn-outline-success calculateButton">Calcular trade</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center">
+        <table id="holdingTable" class="table table-responsive">
+          <thead class="thead-light">
+            <tr>
+              <th>Moneda</th>
+              <th>Logo</th>
+              <th>Descripción</th>
+              <th>Precio de compra</th>
+              <th>Precio actual</th>
+              <th>Cantidad</th>
+              <th>Calcular</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <select id="coinChoice" name="coinChoice">
+                  <option value="0">Elegí tu moneda</option>
+                  <option value="1">BTC</option>
+                  <option value="2">ETH</option>
+                  <option value="3">DOT</option>
+                  <option value="4">ADA</option>
+                  <option value="5">CAKE</option>
+                  <option value="6">XVS</option>
+                </select>
+              </th>
+              <td><img class="imageChoice" src="images/BTC.jpeg"></td>
+              <td>Bitcoin's native coin, the first one.</td>
+              <td><input type="number" placeholder="Precio de compra"></td>
+              <td>$37.000</td>
+              <td><input type="number" placeholder="Cantidad"></td>
+              <td><button class="btn-outline-success calculateButton">Calcular hold</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="results" class="row">
+        <div id="tradeBox" class="col-lg-2">
+          <div class="row justify-content-center">
+            <div id="tradeDetails">
+              <div class="resultImage">
+                  <img src="images/BTC.jpeg" alt="Coin image" class="imageChoice">
+              </div>
+            </div>
+          </div>  
+          <div class="row justify-content-center">
+            <div id="tradeNumbers">
+              <h3>BTC</h3>
+                <p>Tu trade en BTC, tuvo el siguiente resultado:</p>
+                <p>$5.000</p>
+                <p>30%</p>
+                <a href="#"><button class="btn-success">Volver</button></a>
+                <p>Calculado el xx/xx/xx + hora</p>               
             </div>
           </div>
         </div>
-      </div>  
-    </div>
+        <div id="holdingBox" class="col-lg-2">
+          <div class="row justify-content-center">
+            <div id="holfingDetails">
+              <div class="resultImage">
+                  <img src="images/BTC.jpeg" alt="Coin image" class="imageChoice">
+              </div>
+            </div>
+          </div>  
+          <div class="row justify-content-center">
+            <div id="holdingNumbers">
+              <h3>BTC</h3>
+                <p>Tu hold en BTC, tiene el siguiente resultado:</p>
+                <p>$5.000</p>
+                <p>30%</p>
+                <a href="#"><button class="btn-success">Volver</button></a>
+                <p>Calculado el xx/xx/xx + hora</p>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>  
+    <!-- <div class="container-fluid" id="contacto">
+      <div class="row align-items-center">
+        <div class="col-lg-5" id="leftMenuContacto">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="col-lg-4 offset-lg-4">
+                <h3 class="contactTitle" id="titleContact">Contacto</h3>
+              </div>                
+            </div>
+          </div>
+        </div>
+        <div id="contactMain" class="col-lg-7">
+          <div class="row contactMainTitleContainer"> 
+            <div class="col-lg-4 offset-lg-4">
+              <h3 class="contactMainTitle">Mis datos</h3>               
+            </div>
+          </div>
+          <div class="row contactInformationContainer">
+            <div class="col-lg-8 offset-lg-2">
+              <p class="contactInformationText">Si tenés alguna duda o simplemente querés seguir aprendiendo sobre este mundo fascinante podés encontrarme por los siguientes medios:</p>
+            </div>
+            <div class="col-lg-8 offset-lg-2 iconsContainer">
+              <a href="https://twitter.com/Cryp_tino" target="_blank"><span class="icon-twitter icons"></span></a>
+              <a href="https://www.linkedin.com/in/martin-azpiroz-aa1530140/" target="_blank"><span class="icon-linkedin icons"></span></a>
+              <a href="https://t.me/MICripto" target="_blank"><span class="icon-telegram icons"></span></a>
+              <a href="https://github.com/Tiiinoo" target="_blank"><span class="icon-github icons"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </main>
-  <footer>
-
+  <footer class="container-fluid" id="footer">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-md-12 col-ms-12 col-12">
+        <div class="footerText">&copy; Copyright 2020 - Martín Azpiroz - Coderhouse &reg; Camada 10660 -
+        </div>
+      </div>
+    </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="src/js/bootstrap.min.js"></script>

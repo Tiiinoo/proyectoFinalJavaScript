@@ -4,37 +4,10 @@
 h1 {
   text-align: center;
 }
-.coinsOption {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 15px;
+.imageChoice {
+  width: 80px;
+  height: auto;
 }
-.coinsH2 {
-  display: block;
-}
-.coinsImg {
-  display: block;
-}
-.coinsDescription {
-  display: block;
-}
-.coinsButton {
-  display: block;
-  margin-top: 3px;
-  border-radius: 50px;
-  width: fit-content;
-  background: linear-gradient(145deg, #ffffff, #e4e3e3);
-  box-shadow:  5px 5px 10px #656565,
-             -5px -5px 10px #ffffff;
-}
-.calculateButton {
-  display: block;
-  margin-top: 3px;
-  border-radius: 50px;
-  width: fit-content;
-  background: linear-gradient(145deg, #ffffff, #e4e3e3);
-  box-shadow:  5px 5px 10px #656565,
-             -5px -5px 10px #ffffff;
+#tradeNumbers, #holdingNumbers {
+  text-align: -webkit-center; 
 }

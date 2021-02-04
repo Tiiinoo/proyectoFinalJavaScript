@@ -2,13 +2,13 @@ let tradingChoise = document.getElementById('tradingButton');
 let holdingChoise = document.getElementById('holdingButton');
 let defiChoise = document.getElementById('defiButton');
 const calculateBox = document.getElementById('calculateBox');
-let fotos = ['images/ADA.png','images/BTC.jpeg','mages/CAKE.jpeg','images/ETH.jpeg']
+let investmentChoice = document.getElementById('investmentChoices');
 
 
 function buildCoinOptions() {
   
     const htmlDiv = `
-            <div class="row">
+            <div class="row row d-flex justify-content-center flex-column">
                 <div class="col-lg-6 offset-lg-3">
                     <span class="badge badge-success">Selecciona la moneda en la cual invertiste</span>
                 </div>        
@@ -25,12 +25,22 @@ function buildCoinOptions() {
        return htmlDiv;
   }
 
-  tradingChoise.onclick = function() {
+  
+
+  investmentChoice.onclick = function() {
+      let newDiv = document.createElement('input');
+      let newButton = document.createElement('button');
       let divloco = document.createElement('img');
-      divloco.src = fotos[1];
+      
+      newDiv.setAttribute('type', 'text');
+      newButton.textContent= 'Sí mami, mostrame';
+      newButton.classList.add('btn-outline-success', 'd-block');
+      divloco.src = coins.img;
       divloco.classList.add('bg-blue');
+      calculateBox.appendChild(newDiv);
+      calculateBox.appendChild(newButton);
       calculateBox.appendChild(divloco)
-  };
+  }
 
   function buildCalculator() {
     // const calculator = buildCoinOption();
