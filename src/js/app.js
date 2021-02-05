@@ -23,7 +23,7 @@ function buildCoinsOption(coins) {
   
   return div;
 }
-function buildCoinCalculator() {
+function buildCoinCalculator(coins) {
   
   const htmlDiv = `
     <div id="calculator" class="coinsOption">

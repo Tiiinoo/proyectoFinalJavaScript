@@ -1,3 +1,5 @@
+let objetCalcularInversion = "";
+
 let tradingButton = document.getElementById('tradingButton');
 let holdingButton = document.getElementById('holdingButton');
 // let defiButton = document.getElementById('defiButton');
@@ -12,27 +14,27 @@ let tradingQuantity = document.getElementById('tradingQuantity');
 let tradingCalculateButton = document.getElementById('tradingCalculateButton');
 
 
-let holdingTable = document.getElementById('holdingTable');
-let holdingCoinChoice = document.getElementById('holdingCoinChoice');
-let holdingImageChoice = document.getElementById('holdingImageChoice');
-let holdingDescription = document.getElementById('holdingDescription');
-let holdingBuyPrice = document.getElementById('holdingBuyPrice');
-let holdingPrice = document.getElementById('holdingPrice');
-let holdingQuantity = document.getElementById('holdingQuantity');
-let holdingCalculateButton = document.getElementById('holdingCalculateButton');
+// let holdingTable = document.getElementById('holdingTable');
+// let holdingCoinChoice = document.getElementById('holdingCoinChoice');
+// let holdingImageChoice = document.getElementById('holdingImageChoice');
+// let holdingDescription = document.getElementById('holdingDescription');
+// let holdingBuyPrice = document.getElementById('holdingBuyPrice');
+// let holdingPrice = document.getElementById('holdingPrice');
+// let holdingQuantity = document.getElementById('holdingQuantity');
+// let holdingCalculateButton = document.getElementById('holdingCalculateButton');
 
 
 
 tradingButton.onclick = showTradingTable;
-holdingButton.onclick = showHoldingTable;
+// holdingButton.onclick = showHoldingTable;
 // defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
 
 function showTradingTable() {
   tradingTable.classList.toggle('d-none');      
 }
 
-function showHoldingTable() {
-  holdingTable.classList.toggle('d-none');    
-}
+// function showHoldingTable() {
+//   holdingTable.classList.toggle('d-none');    
+// }
 
 
