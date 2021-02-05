@@ -1,4 +1,4 @@
-const arrayCoins = ['BTC', 'ETH', 'DOT', 'ADA', 'CAKE', 'XVS'];
+const arrayCoins = ['Seleccioná tu moneda','BTC', 'ETH', 'DOT', 'ADA', 'CAKE', 'XVS'];
 
 const coins = [
   {

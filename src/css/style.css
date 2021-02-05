@@ -11,6 +11,6 @@ h1 {
 #mainNav, #selectionTitle, #investmentChoices, #tradingTable, #holdingTable {
   margin-bottom: 25px;
 }
-#tradeNumbers, #holdingNumbers {
+#tradeNumbers, #holdingNumbers, #footer {
   text-align: -webkit-center; 
 }

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="src/css/style.css">
     <script defer src="src/js/data.js"></script>
     <script defer src="src/js/variables.js"></script>
+    <script defer src="src/js/objetoCalcular.js"></script>
+    <script defer src="src/js/logica.js"></script>
     <!-- <script src="src/js/DOMBuilder.js"></script> -->
     <!--<script defer src="src/js/inversionApp.js"></script>-->
     
@@ -68,17 +70,67 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <table id="tradingTable" class="table table-responsive">
-            
+          <table id="tradingTable" class="table table-responsive d-none">
+            <thead class="thead-light">
+              <tr>
+                <th>Moneda</th>
+                <th>Logo</th>
+                <th>Descripción</th>
+                <th>Precio de compra</th>
+                <th>Precio de venta</th>
+                <th>Cantidad</th>
+                <th>Calcular</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <select id="tradingCoinChoice" name="coinChoice">
+
+                  </select>
+                </th>
+                <td><img id="tradingImageChoice" class="imageChoice" src="images/BTC.jpeg"></td>
+                <td id="tradingDescription" class="buypriceContainer">Bitcoin's native coin, the first one.</td>
+                <td><input id="tradingBuyPrice" type="number" placeholder="Precio de compra"></td>
+                <td class="sellpriceContainer"><input id="tradingSellPrice"type="number" placeholder="Precio de venta"></td>
+                <td class="quantityContainer"><input id="tradingQuantity" type="number" placeholder="Cantidad"></td>
+                <td class="calculateButtonContainer"><button id="tradingCalculateButton" class="btn-outline-success calculateButton">Calcular trade</button></td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div class="row justify-content-center">
-          <table id="holdingTable" class="table table-responsive">
-            
+          <table id="holdingTable" class="table table-responsive d-none">
+            <thead class="thead-light">
+              <tr>
+                <th>Moneda</th>
+                <th>Logo</th>
+                <th>Descripción</th>
+                <th>Precio de compra</th>
+                <th>Precio actual</th>
+                <th>Cantidad</th>
+                <th>Calcular</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <select id="holdingCoinChoice" name="coinChoice">
+                    
+                  </select>
+                </th>
+                <td><img id="holdingImageChoice" class="imageChoice" src="images/BTC.jpeg"></td>
+                <td id="holdingDescription">Bitcoin's native coin, the first one.</td>
+                <td class="buypriceContainer"><input id="holdingBuyPrice" type="number" placeholder="Precio de compra"></td>
+                <td id="holdingPrice" class="sellpriceContainer">$37.000</td>
+                <td class="quantityContainer"><input id="holdingQuantity" type="number" placeholder="Cantidad"></td>
+                <td class="calculateButtonContainer"><button id="holdingCalculateButton" class="btn-outline-success calculateButton">Calcular hold</button></td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div id="results" class="row">
-          <div id="tradeBox" class="col-lg-2">
+          <!-- <div id="tradeBox" class="col-lg-2">
             <div class="row justify-content-center">
               <div id="tradeDetails">
                 <div class="resultImage">
@@ -88,7 +140,6 @@
             </div>  
             <div class="row justify-content-center">
               <div id="tradeNumbers">
-                <h3>BTC</h3>
                   <p>Tu trade en BTC, tuvo el siguiente resultado:</p>
                   <p>$5.000</p>
                   <p>30%</p>
@@ -96,8 +147,8 @@
                   <p>Calculado el xx/xx/xx + hora</p>               
               </div>
             </div>
-          </div>
-          <div id="holdingBox" class="col-lg-2">
+          </div> -->
+          <!-- <div id="holdingBox" class="col-lg-2">
             <div class="row justify-content-center">
               <div id="holfingDetails">
                 <div class="resultImage">
@@ -107,7 +158,6 @@
             </div>  
             <div class="row justify-content-center">
               <div id="holdingNumbers">
-                <h3>BTC</h3>
                   <p>Tu hold en BTC, tiene el siguiente resultado:</p>
                   <p>$5.000</p>
                   <p>30%</p>
@@ -115,7 +165,7 @@
                   <p>Calculado el xx/xx/xx + hora</p>
               </div>
             </div>
-          </div>        
+          </div>         -->
         </div>
       </div>  
       <!-- <div class="container-fluid" id="contacto">
@@ -151,8 +201,8 @@
       </div> -->
     </main>
     <footer class="container-fluid" id="footer">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3 col-md-12 col-ms-12 col-12">
+      <div class="row align-items-center">
+        <div class="col-md-12 col-ms-12 col-12">
           <div class="footerText">&copy; Copyright 2020 - Martín Azpiroz - Coderhouse &reg; Camada 10660 -
           </div>
         </div>
