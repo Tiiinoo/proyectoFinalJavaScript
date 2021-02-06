@@ -17,3 +17,6 @@ h1 {
 #tradeNumbers, #holdingNumbers, #footer {
   text-align: -webkit-center; 
 }
+.backButton {
+  margin-bottom: 15px;
+}

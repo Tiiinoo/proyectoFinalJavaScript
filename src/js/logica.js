@@ -37,9 +37,28 @@ function loadDescription(){
  tradingCalculateButton.onclick = returnInversion;
 //Función del botón calcular trade, instancio el objeto y calculo la inversión
  function returnInversion() {
-   objetCalcularInversion = new tradingInversionCalculate(tradingBuyPrice.value, tradingSellPrice.value, tradingQuantity.value)
+   objetCalcularInversion = new tradingInversionCalculate(tradingBuyPrice.value, tradingSellPrice.value, tradingQuantity.value);
    resultsDiv.innerHTML +=` 
-                           <p>Tu resultado fue de ${objetCalcularInversion.retornoInversion()}</p>
+                           <div id="tradeBox" class="col-lg-2"> 
+                              <div class="row justify-content-center">
+                                 <div id="tradeNumbers">
+                                    <p>Tu trade en ${tradingCoinChoice.value}, tuvo el siguiente resultado:</p>
+                                    <p>$ ${objetCalcularInversion.retornoInversion()}</p>
+                                    <p>${objetCalcularInversion.percentageInversion()}%</p>
+                                    <a href="#header"><button class="btn-success backButton">Volver</button></a>
+                                    <p>Calculado el xx/xx/xx + hora</p>               
+                                 </div>
+                              </div>
+                           </div> 
                            `;
-     
+   userselectedCoins.push(tradingCoinChoice.value);
+   userTraderesult.push(objetCalcularInversion.retornoInversion());
+   userTradePercentage.push(objetCalcularInversion.percentageInversion())
+   saveonLocalStorage();
  }
+
+ function saveonLocalStorage() {
+   localStorage.setItem('Coinselection', JSON.stringify(userselectedCoins));
+   localStorage.setItem('tradeResutl', (JSON.stringify(userTraderesult)));
+   localStorage.setItem('tradePercentage', JSON.stringify(userTradePercentage))
+}

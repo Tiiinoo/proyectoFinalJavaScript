@@ -23,7 +23,11 @@ let tradingCalculateButton = document.getElementById('tradingCalculateButton');
 // let holdingQuantity = document.getElementById('holdingQuantity');
 // let holdingCalculateButton = document.getElementById('holdingCalculateButton');
 
-let resultsDiv = document.getElementById('resulsDiv')
+let resultsDiv = document.getElementById('resultsDiv')
+
+let userselectedCoins = [];
+let userTraderesult = [];
+let userTradePercentage = [];
 
 
 tradingButton.onclick = showTradingTable;
