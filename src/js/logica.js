@@ -38,5 +38,8 @@ function loadDescription(){
 //Función del botón calcular trade, instancio el objeto y calculo la inversión
  function returnInversion() {
    objetCalcularInversion = new tradingInversionCalculate(tradingBuyPrice.value, tradingSellPrice.value, tradingQuantity.value)
-   
+   resultsDiv.innerHTML +=` 
+                           <p>Tu resultado fue de ${objetCalcularInversion.retornoInversion()}</p>
+                           `;
+     
  }
