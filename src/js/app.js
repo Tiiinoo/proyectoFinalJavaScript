@@ -17,14 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
    // Recuperar datos del Local Storage y "pushearlos" a los arrays correspondientes
    if(localStorage.getItem('coinSelection')) {
       userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));
+      //Chequeo temporal para verificar que funcione, de aquí construiré automáticamente los resultados antiguos
       console.log(userselectedCoins)
     }
     if(localStorage.getItem('tradeResult')) {
       userTraderesult = JSON.parse(localStorage.getItem('tradeResult'));
+      //Chequeo temporal para verificar que funcione, de aquí construiré automáticamente los resultados antiguos
       console.log(userTraderesult)
     }
     if(localStorage.getItem('tradePercentage')) {
       userTradePercentage = JSON.parse(localStorage.getItem('tradePercentage'));
+      //Chequeo temporal para verificar que funcione, de aquí construiré automáticamente los resultados antiguos
       console.log(userTradePercentage)
     }
  })
