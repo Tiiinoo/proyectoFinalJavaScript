@@ -9,10 +9,23 @@ function crearSelect(idElement, arrayData) {
           idElement.innerHTML = select;
     }
  }
-// Cargar los combos de monedas automáticamente con la carga de la página. 
+// Cargar los combos de monedas automáticamente con la carga de la página.
+// Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
 document.addEventListener("DOMContentLoaded", () => {
-     crearSelect(tradingCoinChoice, arrayCoins)
-     crearSelect(holdingCoinChoice, arrayCoins)      
+     crearSelect(tradingCoinChoice, arrayCoins);
+     crearSelect(holdingCoinChoice, arrayCoins);
+     if(localStorage.getItem('coinSelection')) {
+      userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));
+      console.log(userselectedCoins)
+    }
+    if(localStorage.getItem('tradeResult')) {
+      userTraderesult = JSON.parse(localStorage.getItem('tradeResult'));
+      console.log(userTraderesult)
+    }
+    if(localStorage.getItem('tradePercentage')) {
+      userTradePercentage = JSON.parse(localStorage.getItem('tradePercentage'));
+      console.log(userTradePercentage)
+    }
  })
 //Evento para carga de imágen y descripción de la moneda
 tradingCoinChoice.onchange = loadImage;
@@ -56,9 +69,9 @@ function loadDescription(){
    userTradePercentage.push(objetCalcularInversion.percentageInversion())
    saveonLocalStorage();
  }
-
+// Función para guardar datos en local storage
  function saveonLocalStorage() {
-   localStorage.setItem('Coinselection', JSON.stringify(userselectedCoins));
-   localStorage.setItem('tradeResutl', (JSON.stringify(userTraderesult)));
+   localStorage.setItem('coinSelection', JSON.stringify(userselectedCoins));
+   localStorage.setItem('tradeResult', (JSON.stringify(userTraderesult)));
    localStorage.setItem('tradePercentage', JSON.stringify(userTradePercentage))
 }
