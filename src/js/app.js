@@ -63,7 +63,7 @@ function loadDescription(){
                                     <p>$ ${objetCalcularInversion.retornoInversion()}</p>
                                     <p>${objetCalcularInversion.percentageInversion()}%</p>
                                     <a href="#header"><button class="btn-success backButton">Volver</button></a>
-                                    <p>Calculado el xx/xx/xx + hora</p>               
+                                    <p>Calculado el ${day}-${month}-${year} a las ${hour}:${minutes} hs</p>               
                                  </div>
                               </div>
                            </div> 

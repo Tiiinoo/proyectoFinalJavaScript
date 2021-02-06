@@ -25,6 +25,14 @@ let tradingCalculateButton = document.getElementById('tradingCalculateButton');
 
 let resultsDiv = document.getElementById('resultsDiv')
 
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+let hour = date.getHours();
+let minutes = date.getMinutes();
+let seconds = date.getSeconds();
+
 let userselectedCoins = [];
 let userTraderesult = [];
 let userTradePercentage = [];
