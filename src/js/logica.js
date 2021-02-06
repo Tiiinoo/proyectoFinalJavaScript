@@ -12,9 +12,10 @@ function crearSelect(idElement, arrayData) {
 // Cargar los combos de monedas automáticamente con la carga de la página.
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
 document.addEventListener("DOMContentLoaded", () => {
-     crearSelect(tradingCoinChoice, arrayCoins);
-     crearSelect(holdingCoinChoice, arrayCoins);
-     if(localStorage.getItem('coinSelection')) {
+   crearSelect(tradingCoinChoice, arrayCoins);
+   crearSelect(holdingCoinChoice, arrayCoins);
+   // Recuperar datos del Local Storage y "pushearlos" a los arrays correspondientes
+   if(localStorage.getItem('coinSelection')) {
       userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));
       console.log(userselectedCoins)
     }
