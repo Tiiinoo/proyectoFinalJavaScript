@@ -2,6 +2,13 @@ const arrayCoins = ['Seleccioná tu moneda','BTC', 'ETH', 'DOT', 'ADA', 'CAKE', 
 
 const coins = [
   {
+    "coinid": "Seleccioná tu moneda",
+    "name": "Seleccioná tu moneda",
+    "img": "",
+    "description": "",
+    "price": "",
+  },
+  {
     "coinid": "BTC",
     "name": "BITCON",
     "img": "images/BTC.jpeg",

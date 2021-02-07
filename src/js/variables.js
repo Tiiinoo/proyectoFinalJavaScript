@@ -1,49 +1,51 @@
 let objetCalcularInversion = "";
 
-let tradingButton = document.getElementById('tradingButton');
-let holdingButton = document.getElementById('holdingButton');
-// let defiButton = document.getElementById('defiButton');
+let tradingButton = $('#tradingButton');
+let holdingButton = $('#holdingButton');
+let defiButton = $('#defiButton');
 
-let tradingTable = document.getElementById('tradingTable');
-let tradingCoinChoice = document.getElementById('tradingCoinChoice');
-let tradingImageChoice = document.getElementById('tradingImageChoice');
-let tradingDescription = document.getElementById('tradingDescription');
-let tradingBuyPrice = document.getElementById('tradingBuyPrice');
-let tradingSellPrice = document.getElementById('tradingSellPrice');
-let tradingQuantity = document.getElementById('tradingQuantity');
-let tradingCalculateButton = document.getElementById('tradingCalculateButton');
+let tradingTable = $('#tradingTable');
+let tradingCoinChoice = $('#tradingCoinChoice');
+let tradingImageChoice = $('#tradingImageChoice');
+let tradingDescription = $('#tradingDescription');
+let tradingBuyPrice = $('#tradingBuyPrice');
+let tradingSellPrice = $('#tradingSellPrice');
+let tradingQuantity = $('#tradingQuantity');
+let tradingCalculateButton = $('#tradingCalculateButton');
 
 
-// let holdingTable = document.getElementById('holdingTable');
-// let holdingCoinChoice = document.getElementById('holdingCoinChoice');
-// let holdingImageChoice = document.getElementById('holdingImageChoice');
-// let holdingDescription = document.getElementById('holdingDescription');
-// let holdingBuyPrice = document.getElementById('holdingBuyPrice');
-// let holdingPrice = document.getElementById('holdingPrice');
-// let holdingQuantity = document.getElementById('holdingQuantity');
-// let holdingCalculateButton = document.getElementById('holdingCalculateButton');
+// let holdingTable = $('#holdingTable');
+// let holdingCoinChoice = $('#holdingCoinChoice');
+// let holdingImageChoice = $('#holdingImageChoice');
+// let holdingDescription = $('#holdingDescription');
+// let holdingBuyPrice = $('#holdingBuyPrice');
+// let holdingPrice = $('#holdingPrice');
+// let holdingQuantity = $('#holdingQuantity');
+// let holdingCalculateButton = $('#holdingCalculateButton');
 
-let resultsDiv = document.getElementById('resultsDiv')
+let resultsDiv = $('#resultsDiv');
+let newTradeButton = $('#newTradeButton');
 
-const date = new Date();
-let day = date.getDate();
-let month = date.getMonth();
-let year = date.getFullYear();
-let hour = date.getHours();
-let minutes = date.getMinutes();
-let seconds = date.getSeconds();
+const date = moment.locale(); ;
+let day = moment().startOf('minutes').fromNow();
+// let month = date.getMonth();
+// // let year = date.getFullYear();
+// let hour = moment().format('LTS');
+// let minutes = date.getMinutes();
+// let seconds = date.getSeconds();
 
 let userselectedCoins = [];
 let userTraderesult = [];
 let userTradePercentage = [];
+let inversionDiv = "";
 
 
-tradingButton.onclick = showTradingTable;
+tradingButton.click(showTradingTable);
 // holdingButton.onclick = showHoldingTable;
 // defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
 
 function showTradingTable() {
-  tradingTable.classList.toggle('d-none');      
+  tradingTable.toggleClass('d-none');
 }
 
 // function showHoldingTable() {
