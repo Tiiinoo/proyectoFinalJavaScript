@@ -1,10 +1,10 @@
 // Clase constructora del resultado obtenido con cada inversión.
 class tradingInversionCalculate {
-    constructor (tradingBuyPrice, tradingSellPrice, tradingQuantity) {
-      let coinChoice = tradingCoinChoice;
-      let buyPrice = tradingBuyPrice;
-      let sellPrice = tradingSellPrice;
-      let quantity = tradingQuantity;
+    constructor (userBuyPrice, userSellPrice, userQuantity) {
+      //let coinChoice = tradingCoinChoice;
+      let buyPrice = userBuyPrice;
+      let sellPrice = userSellPrice;
+      let quantity = userQuantity;
       this.retornoInversion = function() {
          let result = ((sellPrice - buyPrice) * quantity)
          return result.toFixed(2);
