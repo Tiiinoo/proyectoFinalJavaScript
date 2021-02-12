@@ -1,17 +1,26 @@
 
 
 function cargarGeckoData() {
-    $.ajax({
+   $.ajax({
        type: 'GET',
        crossDomain: true,
        url: 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd',
        dataType: 'json',
        success: function(data) {
           console.log(JSON.stringify(data))
-          apidataJSON = data.results
-          console.log(apidataJSON);
-          return apidataJSON;
-        // //   for (let i in contenidoJSON) {
+          apidataJSON = data.markets
+          console.log(apidataJSON)
+          for (let i in apidataJSON) {
+                  select += `<option id="${apidataJSON[i].symbol}" class="coinSelected">${apidataJSON[i].symbol}</option>`;
+                  };
+                  tradingCoinChoice.html(select);
+         },
+   })
+}
+   
+
+
+
         // //      HTMLTabla += `<tbody>
         // //                     <tr class="white">
         // //                        <td><img src="${contenidoJSON[i].picture.large}" class="circle responsive-img"></td>
@@ -27,6 +36,4 @@ function cargarGeckoData() {
         // //         $('#contenido').slideDown("slow")
         // //      })
         //   };
-       },
-    })
-}
+       

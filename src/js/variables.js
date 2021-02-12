@@ -37,13 +37,14 @@ let holdingUserTraderesult = [];
 let holdingUserTradePercentage = [];
 
 let apidataJSON = "";
+let select = "";
 
 let inversionDiv = "";
 
 // Cargar los combos de monedas automáticamente con la carga de la página.
+cargarGeckoData();
+// cargarGeckoData(holdingCoinChoice);
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
-crearSelect(tradingCoinChoice, arrayCoins);
-crearSelect(holdingCoinChoice, arrayCoins);
 // Recuperar datos del Local Storage y "pushearlos" a los arrays correspondientes
 if(localStorage.getItem('coinSelection')) {
     userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));

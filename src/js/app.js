@@ -1,14 +1,14 @@
 //Función para crear dinámicamente los selects.
 //If => array tiene datos (mayor a cero), suelto la función.
-function crearSelect(idElement, arrayData) { 
-    if (arrayData.length > 0) { 
-       let select = "";
-          for (let i in arrayData) {
-             select += `<option id="${arrayData[i]}" class="coinSelected">${arrayData[i]}</option>`;
-          };
-          $(idElement).html(select);
-    }
- }
+// function crearSelect(idElement, arrayData) { 
+//     if (arrayData.length > 0) { 
+//        let select = "";
+//           for (let i in arrayData) {
+//              select += `<option id="${arrayData[i]}" class="coinSelected">${arrayData[i]}</option>`;
+//           };
+//           $(idElement).html(select);
+//     }
+//  }
 
 //Función mostrar u ocultar tabla de cálculos
 function showTradingTable() {
