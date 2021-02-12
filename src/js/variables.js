@@ -39,10 +39,17 @@ let holdingUserTradePercentage = [];
 let apidataJSON = "";
 let select = "";
 
+function chargeSelect(htmlElement) {
+   $(htmlElement).select2();
+};
+
 let inversionDiv = "";
 
 // Cargar los combos de monedas automáticamente con la carga de la página.
-cargarGeckoData();
+cargarGeckoData(tradingCoinChoice);
+cargarGeckoData(holdingCoinChoice);
+chargeSelect(tradingCoinChoice)
+chargeSelect(holdingCoinChoice)
 // cargarGeckoData(holdingCoinChoice);
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
 // Recuperar datos del Local Storage y "pushearlos" a los arrays correspondientes

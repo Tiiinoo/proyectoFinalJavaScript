@@ -1,14 +1,23 @@
 //Función para crear dinámicamente los selects.
-//If => array tiene datos (mayor a cero), suelto la función.
-// function crearSelect(idElement, arrayData) { 
-//     if (arrayData.length > 0) { 
-//        let select = "";
-//           for (let i in arrayData) {
-//              select += `<option id="${arrayData[i]}" class="coinSelected">${arrayData[i]}</option>`;
-//           };
-//           $(idElement).html(select);
-//     }
-//  }
+function cargarGeckoData(htmlElement) {
+   $.ajax({
+       type: 'GET',
+       crossDomain: true,
+       url: 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd',
+       dataType: 'json',
+       success: function(data) {
+          console.log(JSON.stringify(data))
+          apidataJSON = data
+          console.log(apidataJSON)
+          for (let i in apidataJSON) {
+                  select += `<option id="${apidataJSON[i].symbol.toUpperCase()}" class="coinSelected">${apidataJSON[i].symbol.toUpperCase()}</option>`;
+                  };
+
+                  $(htmlElement).html(select);
+                  
+         },
+   })
+}
 
 //Función mostrar u ocultar tabla de cálculos
 function showTradingTable() {
@@ -27,21 +36,21 @@ function showHoldingTable() {
 //       $(htmlElement).html(`<img class="imageChoice" src="${image}">`);
 
 // }
-function loadImage(){
-   let image = "";
-      let i = coins.find(i => i.coinid == tradingCoinChoice.val())
-      image = i.img
-      $(tradingImageChoice).html(`<img class="imageChoice" src="${image}">`);
+// function loadImage(){
+//    let image = "";
+//       let i = coins.find(i => i.coinid == tradingCoinChoice.val())
+//       image = i.img
+//       $(tradingImageChoice).html(`<img class="imageChoice" src="${image}">`);
 
-      loadDescription();
-}
-//Funciòn carga descripción
-function loadDescription(){
-   let descrip = ""
-      let j = coins.find( j => j.coinid == tradingCoinChoice.val())
-      descrip = j.description
-      $(tradingDescription).html(`${descrip}`);
-}
+//       loadDescription();
+// }
+// //Funciòn carga descripción
+// function loadDescription(){
+//    let descrip = ""
+//       let j = coins.find( j => j.coinid == tradingCoinChoice.val())
+//       descrip = j.description
+//       $(tradingDescription).html(`${descrip}`);
+// }
 // //Funciòn carga descripción
 // function loadDescription(coinChoice, htmlElement){
 //    let descrip = "";
