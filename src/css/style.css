@@ -4,6 +4,12 @@
 h1 {
   text-align: center;
 }
+#tradingTable, #holdingTable {
+  display: none;
+}
+.select2-container {
+  width: 80px;
+} 
 .imageChoice {
   width: 40px;
   height: auto;

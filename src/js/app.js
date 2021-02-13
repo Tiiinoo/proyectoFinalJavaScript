@@ -16,14 +16,6 @@ function chargeGeckoData(htmlElement) {
          },
    })
 }
-//Función mostrar u ocultar tabla de cálculos
-function showTradingTable() {
-   tradingTable.toggleClass('d-none');
-}
-
-function showHoldingTable() {
-  holdingTable.toggleClass('d-none');    
-}
 //Función borrar datos trade calculado
 function tradingFillout() {
    tradingBuyPrice.val('');

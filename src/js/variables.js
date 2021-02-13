@@ -50,9 +50,7 @@ chargeGeckoData(tradingCoinChoice);
 chargeGeckoData(holdingCoinChoice);
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
-// cargarGeckoData(holdingCoinChoice);
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
-// Recuperar datos del Local Storage y "pushearlos" a los arrays correspondientes
 if(localStorage.getItem('coinSelection')) {
     userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));
     //De aquí construiré automáticamente los resultados antiguos
@@ -68,8 +66,13 @@ if(localStorage.getItem('coinSelection')) {
 
 
 // EVENTOS
-tradingButton.click(showTradingTable);
-holdingButton.click(showHoldingTable);
+//Eventos para mostrar tablas
+tradingButton.click(function () {
+   tradingTable.slideToggle(1000);
+});
+holdingButton.click(function () {
+   holdingTable.slideToggle(1000);
+});
 // defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
 //Evento para carga de imagen y ath de la moneda tradeada.
 tradingCoinChoice.change(() => {
@@ -113,7 +116,7 @@ holdingCoinChoice.change(() => {
    let currentPrice = "";
    let currentPriceData = "";
    let i = apiDataJSON.find(i => i.symbol.toUpperCase() == holdingCoinChoice.val())
-   currentPriceData = i.ath
+   currentPriceData = i.current_price
    currentPrice = `<p id="currentPrice">${currentPriceData}</p>`;
    holdingPrice.html(currentPrice);
    }
