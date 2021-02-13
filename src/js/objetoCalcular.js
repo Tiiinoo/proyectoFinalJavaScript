@@ -11,7 +11,7 @@ class tradingInversionCalculate {
       }
       this.percentageInversion = function() {
          let percentage = ((this.retornoInversion() * 100) / buyPrice);
-         return percentage.toFixed();
-      }   
+         return percentage.toFixed(2);
+      }
    }
 }
