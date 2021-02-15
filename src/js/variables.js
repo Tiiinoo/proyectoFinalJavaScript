@@ -1,9 +1,10 @@
+//Variable instanciar el objeto
 let objetCalcularInversion = "";
-
+//Variables botones principales
 let tradingButton = $('#tradingButton');
 let holdingButton = $('#holdingButton');
 let defiButton = $('#defiButton');
-
+//Variables opciones tabla de trading
 let tradingTable = $('#tradingTable');
 let tradingCoinChoice = $('#tradingCoinChoice');
 let tradingImageChoice = $('#tradingImageChoice');
@@ -12,8 +13,7 @@ let tradingBuyPrice = $('#tradingBuyPrice');
 let tradingSellPrice = $('#tradingSellPrice');
 let tradingQuantity = $('#tradingQuantity');
 let tradingCalculateButton = $('#tradingCalculateButton');
-
-
+//Variables opciones tabla de holding
 let holdingTable = $('#holdingTable');
 let holdingCoinChoice = $('#holdingCoinChoice');
 let holdingImageChoice = $('#holdingImageChoice');
@@ -22,59 +22,69 @@ let holdingBuyPrice = $('#holdingBuyPrice');
 let holdingPrice = $('#holdingPrice');
 let holdingQuantity = $('#holdingQuantity');
 let holdingCalculateButton = $('#holdingCalculateButton');
-
+//Variables div de resultados
 let resultsDiv = $('#resultsDiv');
 let newTradeButton = $('#newTradeButton');
-
+let inversionDiv = "";
 const date = moment.locale(); ;
 let day = moment().startOf('minutes').fromNow();
-
-let tradingUserselectedCoins = [];
-let tradingUserTraderesult = [];
-let tradingUserTradePercentage = [];
-let holdingUserselectedCoins = [];
-let holdingUserTraderesult = [];
-let holdingUserTradePercentage = [];
-
+//Arrays para uso de localstorage
+let tradingUserSelectedCoins = [];
+let tradingUserResults = [];
+let tradingUserPercentages = [];
+let holdingUserSelectedCoins = [];
+let holdingUserResults = [];
+let holdingUserPercentages = [];
+//Arrays api data info
 let apiDataJSON = "";
 let select = "";
-
-function chargeSelect(htmlElement) {
-   $(htmlElement).select2();
-};
-
-let inversionDiv = "";
-
-// Cargar los combos de monedas automáticamente con la carga de la página.
+// Llamadas a funciones cargar los selects de monedas automáticamente con la carga de la página.
 chargeGeckoData(tradingCoinChoice);
 chargeGeckoData(holdingCoinChoice);
+//Cargar searchers en selects 
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
-if(localStorage.getItem('coinSelection')) {
-    userselectedCoins = JSON.parse(localStorage.getItem('coinSelection'));
+if(localStorage.getItem('tradingCoinSelection')) {
+   tradingUserSelectedCoins = JSON.parse(localStorage.getItem('tradingCoinSelection'));
     //De aquí construiré automáticamente los resultados antiguos
 }
-  if(localStorage.getItem('tradeResult')) {
-    userTraderesult = JSON.parse(localStorage.getItem('tradeResult'));
-    //De aquí construiré automáticamente los resultados antiguos
+if(localStorage.getItem('tradingResult')) {
+   tradingUserResults = JSON.parse(localStorage.getItem('tradingResult'));
+   //De aquí construiré automáticamente los resultados antiguos
 }
-  if(localStorage.getItem('tradePercentage')) {
-    userTradePercentage = JSON.parse(localStorage.getItem('tradePercentage'));
-    //De aquí construiré automáticamente los resultados antiguos
+if(localStorage.getItem('tradingPercentage')) {
+   tradingUserPercentages = JSON.parse(localStorage.getItem('tradingPercentage'));
+   //De aquí construiré automáticamente los resultados antiguos
 }
-
-
+if(localStorage.getItem('holdingCoinSelection')) {
+   holdingUserSelectedCoins = JSON.parse(localStorage.getItem('holdingCoinSelection'));
+   //De aquí construiré automáticamente los resultados antiguos
+}
+if(localStorage.getItem('holdingResult')) {
+   holdingUserResults = JSON.parse(localStorage.getItem('holdingResult'));
+   //De aquí construiré automáticamente los resultados antiguos
+}
+if(localStorage.getItem('holdingPercentage')) {
+   holdingUserPercentages = JSON.parse(localStorage.getItem('holdingPercentage'));
+   //De aquí construiré automáticamente los resultados antiguos
+}
 // EVENTOS
 //Eventos para mostrar tablas
 tradingButton.click(function () {
-   tradingTable.slideToggle(1000);
+   tradingTable.slideDown(1000);
+});
+tradingButton.click(function () {
+   $('#contacto').removeClass('welcome')
+})
+holdingButton.click(function () {
+   holdingTable.slideDown(1000);
 });
 holdingButton.click(function () {
-   holdingTable.slideToggle(1000);
-});
+   $('#contacto').removeClass('welcome')
+})
 // defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
-//Evento para carga de imagen y ath de la moneda tradeada.
+//Eventos para carga de imagen y ath de la moneda tradeada.
 tradingCoinChoice.change(() => {
    let image = "";
    let imageData = "";
@@ -93,7 +103,7 @@ tradingCoinChoice.change(() => {
    tradingATH.html(ath);
    }
 );
-//Eventos para cargar imagen, ath y current price del la moneda holdeada.
+//Eventos para cargar imagen, ath y current price de la moneda holdeada.
 holdingCoinChoice.change(() => {
    let image = "";
    let imageData = "";
@@ -137,13 +147,13 @@ tradingCalculateButton.click((e) => {
                        </div>
                     </div>`;                  
   resultsDiv.html(inversionDiv);
-  tradingUserselectedCoins.push(tradingCoinChoice.val());
-  tradingUserTraderesult.push(objetCalcularInversion.retornoInversion());
-  tradingUserTradePercentage.push(objetCalcularInversion.percentageInversion())
+  tradingUserSelectedCoins.push(tradingCoinChoice.val());
+  tradingUserResults.push(objetCalcularInversion.retornoInversion());
+  tradingUserPercentages.push(objetCalcularInversion.percentageInversion())
   saveonLocalStorage();
   tradingFillout();
 })
-//Evento del botón calcular trade
+//Evento del botón calcular hold
 holdingCalculateButton.click((e) => {
   e.preventDefault();
   objetCalcularInversion = new tradingInversionCalculate(holdingBuyPrice.val(), $('#currentPrice').text(), holdingQuantity.val());
@@ -159,12 +169,9 @@ holdingCalculateButton.click((e) => {
                        </div>
                     </div>`;                  
   resultsDiv.html(inversionDiv);
-  holdingUserselectedCoins.push(tradingCoinChoice.val());
-  holdingUserTraderesult.push(objetCalcularInversion.retornoInversion());
-  holdingUserTradePercentage.push(objetCalcularInversion.percentageInversion())
+  holdingUserSelectedCoins.push(tradingCoinChoice.val());
+  holdingUserResults.push(objetCalcularInversion.retornoInversion());
+  holdingUserPercentages.push(objetCalcularInversion.percentageInversion())
   saveonLocalStorage();
   holdingFillout();
 })
-
-
-

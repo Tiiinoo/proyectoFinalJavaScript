@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control your gains</title>
     <link rel="stylesheet" href="src/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/mains.css">
+    <link rel="stylesheet" href="icomoon/style.css">
     <link rel="stylesheet" href="src/css/select2.min.css">
     <!-- JQuery last version-->
     <script src="src/js/jquery.min.js"></script>
@@ -20,7 +21,7 @@
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
             <h1>Control your gains</h1>
-            <p>Bienvenido al sitio dónde podrás llevar una gestión ordenada de tus inversiones en criptomonedas</p>
+            <p id="graph">Bienvenido al sitio dónde podrás llevar una gestión ordenada de tus inversiones en criptomonedas</p>
             <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-light">
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -83,7 +84,7 @@
               <tr>
                 <th scope="row">
                   <select id="tradingCoinChoice" class="js-responsive" name="coinTradingChoice">
-
+                    <option class="coinSelected">Elegí</option>
                   </select>
                 </th>
                 <td id="tradingImageChoice">
@@ -117,7 +118,7 @@
               <tr>
                 <th scope="row">
                   <select id="holdingCoinChoice" class="js-example-responsive" name="coinHoldingChoice">
-                    
+                    <option class="coinSelected">Elegí</option>
                   </select>
                 </th>
                 <td id="holdingImageChoice">
@@ -136,14 +137,11 @@
             </tbody>
           </table>
         </div>
-        <!-- <canvas id="myChart" width="300" height="200">
-
-        </canvas> -->
         <div id="resultsDiv" class="row">
 
         </div>
       </div>  
-      <!-- <div class="container-fluid" id="contacto">
+      <div class="container-fluid welcome" id="contacto">
         <div class="row align-items-center">
           <div class="col-lg-5" id="leftMenuContacto">
             <div class="row">
@@ -165,15 +163,15 @@
                 <p class="contactInformationText">Si tenés alguna duda o simplemente querés seguir aprendiendo sobre este mundo fascinante podés encontrarme por los siguientes medios:</p>
               </div>
               <div class="col-lg-8 offset-lg-2 iconsContainer">
-                <a href="https://twitter.com/Cryp_tino" target="_blank"><span class="icon-twitter icons"></span></a>
-                <a href="https://www.linkedin.com/in/martin-azpiroz-aa1530140/" target="_blank"><span class="icon-linkedin icons"></span></a>
-                <a href="https://t.me/MICripto" target="_blank"><span class="icon-telegram icons"></span></a>
-                <a href="https://github.com/Tiiinoo" target="_blank"><span class="icon-github icons"></span></a>
+                <a href="https://twitter.com/Cryp_tino" target="_blank" class="icons"><span class="icon-twitter icons"></span></a>
+                <a href="https://www.linkedin.com/in/martin-azpiroz-aa1530140/" target="_blank" class="icons"><span class="icon-linkedin icons"></span></a>
+                <a href="https://t.me/MICripto" target="_blank"><span class="icon-telegram icons" class="icons"></span></a>
+                <a href="https://github.com/Tiiinoo" target="_blank"><span class="icon-github icons" class="icons"></span></a>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </main>
     <footer class="container-fluid" id="footer">
       <div class="row align-items-center">
