@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control your gains</title>
     <link rel="stylesheet" href="src/css/bootstrap.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="src/css/style.css">
     <script defer src="src/js/data.js"></script>
     <script defer src="src/js/variables.js"></script>
     <script defer src="src/js/objetoCalcular.js"></script>
     <script defer src="src/js/app.js"></script>
+=======
+    <link rel="stylesheet" href="src/css/mains.css">
+    <link rel="stylesheet" href="icomoon/style.css">
+    <link rel="stylesheet" href="src/css/select2.min.css">
+>>>>>>> integrandoAPI
     <!-- JQuery last version-->
     <script src="src/js/jquery.min.js"></script>
+    <script src="src/js/objetoCalcular.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/select2.min.js"></script>
+    <script defer src="src/js/variables.js"></script>
   </head>
   <body>
     <header id="header">
@@ -19,7 +29,7 @@
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
             <h1>Control your gains</h1>
-            <p>Bienvenido al sitio dónde podrás llevar una gestión ordenada de tus inversiones en criptomonedas</p>
+            <p id="graph">Bienvenido al sitio dónde podrás llevar una gestión ordenada de tus inversiones en criptomonedas</p>
             <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-light">
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,12 +76,12 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <table id="tradingTable" class="table table-responsive d-none">
+          <table id="tradingTable" class="table table-responsive">
             <thead class="thead-light">
               <tr>
                 <th>Moneda</th>
                 <th>Logo</th>
-                <th>Descripción</th>
+                <th title="Mayor precio histórico">ATH</th>
                 <th>Precio de compra</th>
                 <th>Precio de venta</th>
                 <th>Cantidad</th>
@@ -81,14 +91,14 @@
             <tbody>
               <tr>
                 <th scope="row">
-                  <select id="tradingCoinChoice" name="coinChoice">
-
+                  <select id="tradingCoinChoice" class="js-responsive" name="coinTradingChoice">
+                    <option class="coinSelected">Elegí</option>
                   </select>
                 </th>
                 <td id="tradingImageChoice">
                   
                 </td>
-                <td id="tradingDescription">
+                <td id="tradingATH">
 
                 </td>
                 <td><input id="tradingBuyPrice" type="number" placeholder="Precio de compra"></td>
@@ -100,12 +110,12 @@
           </table>
         </div>
         <div class="row justify-content-center">
-          <table id="holdingTable" class="table table-responsive d-none">
+          <table id="holdingTable" class="table table-responsive">
             <thead class="thead-light">
               <tr>
                 <th>Moneda</th>
                 <th>Logo</th>
-                <th>Descripción</th>
+                <th title="Mayor precio histórico">ATH</th>
                 <th>Precio de compra</th>
                 <th>Precio actual</th>
                 <th>Cantidad</th>
@@ -115,14 +125,14 @@
             <tbody>
               <tr>
                 <th scope="row">
-                  <select id="holdingCoinChoice" name="coinChoice">
-                    
+                  <select id="holdingCoinChoice" class="js-example-responsive" name="coinHoldingChoice">
+                    <option class="coinSelected">Elegí</option>
                   </select>
                 </th>
-                <td>
-                  <!-- <img id="holdingImageChoice" class="imageChoice" src="""> -->
+                <td id="holdingImageChoice">
+                  <!-- <img id="holdingImageChoice" class="imageChoice" src=""> -->
                 </td>
-                <td id="holdingDescription">
+                <td id="holdingATH">
                   <!-- Descripción de la crypto elegida -->
                 </td>
                 <td class="buypriceContainer"><input id="holdingBuyPrice" type="number" placeholder="Precio de compra"></td>
@@ -136,45 +146,10 @@
           </table>
         </div>
         <div id="resultsDiv" class="row">
-          <!-- <div id="tradeBox" class="col-lg-2">
-            <div class="row justify-content-center">
-              <div id="tradeDetails">
-                <div class="resultImage">
-                    <img src="images/BTC.jpeg" alt="Coin image" class="imageChoice">
-                </div>
-              </div>
-            </div>  
-            <div class="row justify-content-center">
-              <div id="tradeNumbers">
-                  <p>Tu trade en BTC, tuvo el siguiente resultado:</p>
-                  <p>$5.000</p>
-                  <p>30%</p>
-                  <a href="#"><button class="btn-success">Volver</button></a>
-                  <p>Calculado el xx/xx/xx + hora</p>               
-              </div>
-            </div>
-          </div> -->
-          <!-- <div id="holdingBox" class="col-lg-2">
-            <div class="row justify-content-center">
-              <div id="holfingDetails">
-                <div class="resultImage">
-                    <img src="images/BTC.jpeg" alt="Coin image" class="imageChoice">
-                </div>
-              </div>
-            </div>  
-            <div class="row justify-content-center">
-              <div id="holdingNumbers">
-                  <p>Tu hold en BTC, tiene el siguiente resultado:</p>
-                  <p>$5.000</p>
-                  <p>30%</p>
-                  <a href="#"><button class="btn-success">Volver</button></a>
-                  <p>Calculado el xx/xx/xx + hora</p>
-              </div>
-            </div>
-          </div>         -->
+
         </div>
       </div>  
-      <!-- <div class="container-fluid" id="contacto">
+      <div class="container-fluid welcome" id="contacto">
         <div class="row align-items-center">
           <div class="col-lg-5" id="leftMenuContacto">
             <div class="row">
@@ -196,15 +171,15 @@
                 <p class="contactInformationText">Si tenés alguna duda o simplemente querés seguir aprendiendo sobre este mundo fascinante podés encontrarme por los siguientes medios:</p>
               </div>
               <div class="col-lg-8 offset-lg-2 iconsContainer">
-                <a href="https://twitter.com/Cryp_tino" target="_blank"><span class="icon-twitter icons"></span></a>
-                <a href="https://www.linkedin.com/in/martin-azpiroz-aa1530140/" target="_blank"><span class="icon-linkedin icons"></span></a>
-                <a href="https://t.me/MICripto" target="_blank"><span class="icon-telegram icons"></span></a>
-                <a href="https://github.com/Tiiinoo" target="_blank"><span class="icon-github icons"></span></a>
+                <a href="https://twitter.com/Cryp_tino" target="_blank" class="icons"><span class="icon-twitter icons"></span></a>
+                <a href="https://www.linkedin.com/in/martin-azpiroz-aa1530140/" target="_blank" class="icons"><span class="icon-linkedin icons"></span></a>
+                <a href="https://t.me/MICripto" target="_blank"><span class="icon-telegram icons" class="icons"></span></a>
+                <a href="https://github.com/Tiiinoo" target="_blank"><span class="icon-github icons" class="icons"></span></a>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </main>
     <footer class="container-fluid" id="footer">
       <div class="row align-items-center">
@@ -216,5 +191,7 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="src/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
   </body>
 </html>
