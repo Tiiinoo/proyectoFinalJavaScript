@@ -1,5 +1,6 @@
 //Variable instanciar el objeto
-let objetCalcularInversion = "";
+let objetctTradeInversion = "";
+let obejctHoldInversion = "";
 //Variables botones principales
 let tradingButton = $('#tradingButton');
 let holdingButton = $('#holdingButton');
@@ -23,21 +24,23 @@ let holdingPrice = $('#holdingPrice');
 let holdingQuantity = $('#holdingQuantity');
 let holdingCalculateButton = $('#holdingCalculateButton');
 //Variables div de resultados
-let resultsDiv = $('#resultsDiv');
+let tradingResultsDiv = $('#tradingResultsDiv');
+let holdingResultsDiv = $('#holdingResultsDiv');
+let oldTradingResultsDiv = $('#oldTradingResultsDiv');
+let oldHoldingResultsDiv = $('#oldHoldingResultsDiv');
 let newTradeButton = $('#newTradeButton');
 let inversionDiv = "";
+let oldTrades = "";
+let oldHold = "";
 const date = moment.locale(); ;
 let day = moment().startOf('minutes').fromNow();
 //Arrays para uso de localstorage
-let tradingUserSelectedCoins = [];
-let tradingUserResults = [];
-let tradingUserPercentages = [];
-let holdingUserSelectedCoins = [];
-let holdingUserResults = [];
-let holdingUserPercentages = [];
+let tradingStorage = [];
+let holdingStorage = [];
 //Arrays api data info
 let apiDataJSON = "";
 let select = "";
+
 // Llamadas a funciones cargar los selects de monedas automáticamente con la carga de la página.
 chargeGeckoData(tradingCoinChoice);
 chargeGeckoData(holdingCoinChoice);
@@ -45,44 +48,62 @@ chargeGeckoData(holdingCoinChoice);
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
 // Recuperar elementos del Local Storage y "pushearlos" a sus respectivos arrays
-if(localStorage.getItem('tradingCoinSelection')) {
-   tradingUserSelectedCoins = JSON.parse(localStorage.getItem('tradingCoinSelection'));
-    //De aquí construiré automáticamente los resultados antiguos
+if(localStorage.getItem('tradingResults')) {
+   tradingStorage = JSON.parse(localStorage.getItem('tradingResults'))
+
+   tradingStorage.forEach(trading => {
+      oldTrades += `
+                     <div id="tradeBox" class="col-lg-3"> 
+                        <div class="row justify-content-center">
+                           <div id="tradeNumbers">
+                              <p>Tu trade en ${trading.coin}, tuvo el siguiente resultado:</p>
+                              <p>Diferencia $${trading.retorno}</p>
+                              <p>Porcentaje de ${trading.porcentaje}%</p>
+                              <p>Total $${trading.total}</p>
+                              <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
+                              <p>Calculado ${day}</p>               
+                           </div>
+                        </div>
+                     </div>`;                  
+       oldTradingResultsDiv.html(oldTrades);
+   })
 }
-if(localStorage.getItem('tradingResult')) {
-   tradingUserResults = JSON.parse(localStorage.getItem('tradingResult'));
-   //De aquí construiré automáticamente los resultados antiguos
+
+if(localStorage.getItem('holdingResults')) {
+   holdingStorage = JSON.parse(localStorage.getItem('holdingResults'))
+
+   holdingStorage.forEach(holding => {
+      oldHold += `
+                  <div id="tradeBox" class="col-lg-3"> 
+                     <div class="row justify-content-center">
+                        <div id="tradeNumbers">
+                           <p>Tu hold de ${holding.coin}, tiene el siguiente rendimiento:</p>
+                           <p>Diferencia de $${holding.retorno}</p>
+                           <p>Porcentaje de ${holding.porcentaje}%</p>
+                           <p>Total $${holding.total}</p>
+                           <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
+                           <p>Calculado ${day}</p>               
+                        </div>
+                     </div>
+                  </div>`;  
+      oldHoldingResultsDiv.html(oldHold);
+   })
 }
-if(localStorage.getItem('tradingPercentage')) {
-   tradingUserPercentages = JSON.parse(localStorage.getItem('tradingPercentage'));
-   //De aquí construiré automáticamente los resultados antiguos
-}
-if(localStorage.getItem('holdingCoinSelection')) {
-   holdingUserSelectedCoins = JSON.parse(localStorage.getItem('holdingCoinSelection'));
-   //De aquí construiré automáticamente los resultados antiguos
-}
-if(localStorage.getItem('holdingResult')) {
-   holdingUserResults = JSON.parse(localStorage.getItem('holdingResult'));
-   //De aquí construiré automáticamente los resultados antiguos
-}
-if(localStorage.getItem('holdingPercentage')) {
-   holdingUserPercentages = JSON.parse(localStorage.getItem('holdingPercentage'));
-   //De aquí construiré automáticamente los resultados antiguos
-}
+
 // EVENTOS
 //Eventos para mostrar tablas
-tradingButton.click(function () {
-   tradingTable.slideDown(1000);
-});
-tradingButton.click(function () {
-   $('#contacto').removeClass('welcome')
-})
-holdingButton.click(function () {
-   holdingTable.slideDown(1000);
-});
-holdingButton.click(function () {
-   $('#contacto').removeClass('welcome')
-})
+// tradingButton.click(function () {
+//    tradingTable.slideDown(1000);
+// });
+// tradingButton.click(function () {
+//    $('#contacto').removeClass('welcome')
+// })
+// holdingButton.click(function () {
+//    holdingTable.slideDown(1000);
+// });
+// holdingButton.click(function () {
+//    $('#contacto').removeClass('welcome')
+// })
 // defiButton.onclick = crearDefiTable; A TRABAJAR PRÓXIMAMENTE
 //Eventos para carga de imagen y ath de la moneda tradeada.
 tradingCoinChoice.change(() => {
@@ -109,7 +130,7 @@ holdingCoinChoice.change(() => {
    let imageData = "";
    let i = apiDataJSON.find(i => i.symbol.toUpperCase() == holdingCoinChoice.val())
    imageData = i.image
-   image = `<img class="imageChoice" src="${imageData}">`;
+   image = `<img class="imageChoice" width="25" src="${imageData}">`;
    holdingImageChoice.html(image);
    }
 );
@@ -131,47 +152,61 @@ holdingCoinChoice.change(() => {
    holdingPrice.html(currentPrice);
    }
 );
+
 //Evento del botón calcular trade
 tradingCalculateButton.click((e) => {
   e.preventDefault();
-  objetCalcularInversion = new tradingInversionCalculate(tradingBuyPrice.val(), tradingSellPrice.val(), tradingQuantity.val());
-  inversionDiv += `<div id="tradeBox" class="col-lg-2"> 
+  objetctTradeInversion = new tradingInversionCalculate(tradingBuyPrice.val(), tradingSellPrice.val(), tradingQuantity.val());
+  inversionDiv = "";
+  inversionDiv += `<div id="tradeBox" class="col-lg-3"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                              <p>Tu trade en ${tradingCoinChoice.val()}, tuvo el siguiente resultado:</p>
-                             <p>$ ${objetCalcularInversion.retornoInversion()}</p>
-                             <p>${objetCalcularInversion.percentageInversion()}%</p>
+                             <p>Diferencia de $${objetctTradeInversion.retornoInversion()}</p>
+                             <p>Porcentaje de ${objetctTradeInversion.percentageInversion()}%</p>
+                             <p>Total $${objetctTradeInversion.totalBalance()}</p>
                              <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
                              <p>Calculado ${day}</p>               
                           </div>
                        </div>
                     </div>`;                  
-  resultsDiv.html(inversionDiv);
-  tradingUserSelectedCoins.push(tradingCoinChoice.val());
-  tradingUserResults.push(objetCalcularInversion.retornoInversion());
-  tradingUserPercentages.push(objetCalcularInversion.percentageInversion())
-  saveonLocalStorage();
-  tradingFillout();
+  tradingResultsDiv.append(inversionDiv);
+  tradingStorage.push({
+                        "coin" : tradingCoinChoice.val(),
+                        "retorno" : objetctTradeInversion.retornoInversion(),
+                        "porcentaje" : objetctTradeInversion.percentageInversion(),
+                        "total" : objetctTradeInversion.totalBalance()
+                     })
+  objetctTradeInversion.saveonLocalStorage();
+  objetctTradeInversion.tradingFillout();
+  inversionDiv = "";
 })
+
 //Evento del botón calcular hold
 holdingCalculateButton.click((e) => {
   e.preventDefault();
-  objetCalcularInversion = new tradingInversionCalculate(holdingBuyPrice.val(), $('#currentPrice').text(), holdingQuantity.val());
-  inversionDiv += `<div id="tradeBox" class="col-lg-2"> 
+  obejctHoldInversion = new tradingInversionCalculate(holdingBuyPrice.val(), $('#currentPrice').text(), holdingQuantity.val());
+  inversionDiv = "";
+  inversionDiv += `<div id="tradeBox" class="col-lg-3"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                              <p>Tu hold de ${holdingCoinChoice.val()}, tiene el siguiente rendimiento:</p>
-                             <p>$ ${objetCalcularInversion.retornoInversion()}</p>
-                             <p>${objetCalcularInversion.percentageInversion()}%</p>
-                             <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
+                             <p>Diferencia de $${obejctHoldInversion.retornoInversion()}</p>
+                             <p>Porcentaje de ${obejctHoldInversion.percentageInversion()}%</p>
+                             <p>Total $${obejctHoldInversion.totalBalance()}</p>
+                             <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
                              <p>Calculado ${day}</p>               
                           </div>
                        </div>
                     </div>`;                  
-  resultsDiv.html(inversionDiv);
-  holdingUserSelectedCoins.push(tradingCoinChoice.val());
-  holdingUserResults.push(objetCalcularInversion.retornoInversion());
-  holdingUserPercentages.push(objetCalcularInversion.percentageInversion())
-  saveonLocalStorage();
-  holdingFillout();
+  holdingResultsDiv.append(inversionDiv);
+  holdingStorage.push({
+                        "coin" : holdingCoinChoice.val(),
+                        "retorno" : obejctHoldInversion.retornoInversion(),
+                        "porcentaje" : obejctHoldInversion.percentageInversion(),
+                        "total" : obejctHoldInversion.totalBalance()
+                     })
+   obejctHoldInversion.saveonLocalStorage();
+   obejctHoldInversion.holdingFillout();
+   inversionDiv = "";   
 })

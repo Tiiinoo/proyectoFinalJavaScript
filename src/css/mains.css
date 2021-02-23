@@ -4,20 +4,17 @@
 #header {
   margin-top: 20px;
 }
-h1 {
+h1, h2, .description {
   text-align: center;
 }
 #mainNav, #graph {
   margin-top: 25px;
-}
-#tradingTable, #holdingTable {
-  display: none;
-}
+} 
 .select2-container {
   width: 80px;
 } 
 .imageChoice {
-  width: 40px;
+  width: 35px;
   height: auto;
 }
 #mainNav, #selectionTitle, #investmentChoices, #tradingTable, #holdingTable {
@@ -29,10 +26,28 @@ h1 {
 #tradeNumbers, #holdingNumbers, #footer {
   text-align: -webkit-center; 
 }
+td {
+  text-align: center;
+}
+.select2 {
+  width: 80px !important;
+}
 .backButton {
   margin-bottom: 15px;
 }
+/* #tradingResultsDiv, #holdingResultsDiv, #oldTradingResultsDiv, #oldHoldingResultsDiv {
+  padding-left: 70px;
+} */
+#tradeBox {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 12px 12px 10px 12px;
+}
 #contacto {
+  margin-top: 10px;
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -64,7 +79,4 @@ a:hover {
   border-color: #dee2e6;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-}
-.welcome {
-  margin-top: 100px;
 }
