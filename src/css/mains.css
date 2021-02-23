@@ -4,7 +4,7 @@
 #header {
   margin-top: 20px;
 }
-h1, h2, .description {
+h1, h2, h3, .description {
   text-align: center;
 }
 #mainNav, #graph {

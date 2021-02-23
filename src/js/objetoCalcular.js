@@ -7,6 +7,10 @@ class tradingInversionCalculate {
      this.quantity = userQuantity;      
   }
   //Función obtener resultado
+  compraInicial = function () {
+     let incialBuy = (this.quantity * this.buyPrice)
+     return incialBuy;
+  }
   retornoInversion = function() {
      let result = ((this.sellPrice - this.buyPrice) * this.quantity)
      return result.toFixed(2);
