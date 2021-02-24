@@ -1,3 +1,5 @@
+router();
+$( window ).bind('hashchange', router)
 //Variable instanciar el objeto
 let objetctTradeInversion = "";
 let obejctHoldInversion = "";

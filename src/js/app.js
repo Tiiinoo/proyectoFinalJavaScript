@@ -55,6 +55,7 @@ function router() {
    $('#singlePage').html(component.render());
 }
 
-$( document ).ready(router)
+// $( document ).ready(router)
 // document.addEventListener('DOMContentLoaded', router)
-window.addEventListener('hashchange', router)
+// $( window ).bind('hashchange', router)
+// window.addEventListener('hashchange', router)
