@@ -1,6 +1,7 @@
 //Variable instanciar el objeto
 let objetctTradeInversion = "";
 let obejctHoldInversion = "";
+let singlePage = $('#singlePage');
 //Variables opciones tabla de trading
 let tradingTable = $('#tradingTable');
 let tradingCoinChoice = $('#tradingCoinChoice');

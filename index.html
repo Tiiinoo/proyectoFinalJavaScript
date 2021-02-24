@@ -14,6 +14,7 @@
     <script src="src/js/app.js"></script>
     <script src="src/js/select2.min.js"></script>
     <script defer src="src/js/variables.js"></script>
+    <script src="src/js/components.js"></script>
   </head>
   <body>
     <header id="header">
@@ -26,18 +27,18 @@
               <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <a class="navbar-brand" href="#!">Home</a>
+              <a class="navbar-brand" href="#/">Home</a>
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#!">100 top cryptos<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#/pagina1">Historial<span class="sr-only">(current)</span></a>
                   </li>
                 </ul>
               </div>
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#!">Historial<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#/pagina2">100 top cryptos<span class="sr-only">(current)</span></a>
                   </li>
                 </ul>
               </div>
@@ -47,153 +48,9 @@
       </div> 
     </header>
     <main>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div id="selectionTitle">
-            <h4><span class="badge badge-secondary">Elegí el tipo de inversión sobre el que querés calcular tus retornos</span></h4>
-          </div>
-        </div>
-        <div id="choisesContainer" class="container">
-          <div class="row justify-content-center">
-            <div id="tradingContainer" class="col-lg-4">
-              <h2><span class="badge badge-success">Trading</span></h2>
-              <p class="description">Si compraste y vendiste tus cryptos y querés conocer tu resultado, completa los siguientes datos:</p> 
-              <table id="tradingTable" class="table table-responsive">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="row">Moneda</th>
-                    <td scope="row">
-                      <select id="tradingCoinChoice" class="js-responsive" name="coinTradingChoice">
-                        <option class="coinSelected">-</option>
-                      </select>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>  
-                  <th scope="row">Logo</th>
-                  <td id="tradingImageChoice">
-                    <img class="imageChoice" src="">
-                  </td>
-                </tbody>
-                <tbody>
-                  <th scope="row" title="Mayor precio histórico">ATH</th>
-                  <td id="tradingATH">
+        <div id="singlePage">
 
-                  </td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Precio de compra</th>
-                  <td><input id="tradingBuyPrice" type="number" placeholder="Precio de compra"></td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Precio de venta</th>
-                  <td class="sellpriceContainer"><input id="tradingSellPrice"type="number" placeholder="Precio de venta"></td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Cantidad</th>
-                  <td class="quantityContainer"><input id="tradingQuantity" type="number" placeholder="Cantidad"></td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Calcular</th>
-                  <td class="calculateButtonContainer"><button id="tradingCalculateButton" class="btn-outline-success calculateButton">Calcular trade</button></td>
-                </tbody>
-              </table>
-            </div>
-            <div id="tradingContainer" class="offset-lg-1 col-lg-4">
-              <h2><span class="badge badge-success">Holding</span></h2>
-              <p class="description">Si tus cryptos siguen en tu billetera y querés conocer tu rendimiento, completa los siguientes datos:</p>             
-              <table id="holdingTable" class="table table-responsive">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="row">Moneda</th>
-                    <td scope="row">
-                      <select id="holdingCoinChoice" class="js-example-responsive" name="coinHoldingChoice">
-                        <option class="coinSelected">-</option>
-                      </select>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>  
-                  <th scope="row">Logo</th>
-                  <td id="holdingImageChoice">
-
-                  </td>
-                </tbody>
-                <tbody>
-                  <th scope="row" title="Mayor precio histórico">ATH</th>
-                  <td id="holdingATH">
-
-                  </td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Precio de compra</th>
-                  <td class="buypriceContainer"><input id="holdingBuyPrice" type="number" placeholder="Precio de compra"></td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Precio actual</th>
-                  <td id="holdingPrice" class="sellpriceContainer">
-
-                  </td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Cantidad</th>
-                  <td class="quantityContainer"><input id="holdingQuantity" type="number" placeholder="Cantidad"></td>
-                </tbody>
-                <tbody>
-                  <th scope="row">Calcular</th>
-                  <td class="calculateButtonContainer"><button id="holdingCalculateButton" class="btn-outline-success calculateButton">Calcular hold</button></td>
-                </tbody>
-              </table>
-            </div>  
-          </div>
-        </div>
-      </div>  
-      <div class="container-fluid">
-        <h3><span class="badge badge-success">Tus trades</span></h3>
-        <div id="tradingResultsDiv" class="row offset-lg-2">
-
-        </div>
-      </div>
-      <div class="container-fluid">
-        <h3><span class="badge badge-success">Tus holds</span></h3>   
-        <div id="holdingResultsDiv" class="row offset-lg-2">
-
-        </div>
-      </div>
-      <div class="container-fluid">
-        <h3><span class="badge badge-success">Tus trades históricos</span></h3>
-        <div id="oldTradingResultsDiv" class="row offset-lg-2">
-          
-        </div>
-      </div>
-      <div class="container-fluid">
-        <h3><span class="badge badge-success">Tus holds históricos</span></h3>
-        <div id="oldHoldingResultsDiv" class="row offset-lg-2">
-
-        </div>
-      </div>
-      <div class="container-fluid" id="cryptoInformation">
-        <div class="row">
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th>#</th>
-                <th>Moneda</th>
-                <th>Logo</th>
-                <th>Precio</th>
-                <th>ATH</th>
-                <th>ATH fecha</th>
-                <th>Max 24h</th>
-                <th>Min 24h</th>
-                <th>24h</th>
-              </tr>
-            </thead>
-            <tbody id="top100">
-
-            </tbody>
-          </table>
-        </div>
-      </div>
+        </div>     
       <div class="container-fluid" id="contacto">
         <div class="row align-items-center">
           <div class="col-lg-5" id="leftMenuContacto">

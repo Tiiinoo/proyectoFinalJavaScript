@@ -37,3 +37,24 @@ function chargeTop100() {
 function chargeSelect(htmlElement) {
    $(htmlElement).select2();
 };
+
+
+//Functions One Page setter.
+const parseLocation = function() {
+   return location.hash.slice(1).toLocaleLowerCase() || "/"
+}
+
+const findComponent = function(path, routes) {
+   return routes.find(route => route.path.match(new RegExp(`^\\${path}$`, 'gm'))) || undefined
+   
+}
+
+function router() {
+   const path = parseLocation()
+   const {component = ComponenteError} = findComponent(path, routes) || {};
+   $('#singlePage').html(component.render());
+}
+
+$( document ).ready(router)
+// document.addEventListener('DOMContentLoaded', router)
+window.addEventListener('hashchange', router)
