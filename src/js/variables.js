@@ -39,6 +39,8 @@ let inversionDiv = "";
 let divHoldResult = $('#divHoldResult');
 let oldTrades = "";
 let oldHolds = "";
+let clearAllTrades = $('#clearAllTrades');
+let clearAllHolds = $('#clearAllHolds');
 let top100Table = $('#top100Table');
 let tokenTop100 = $('#tokenTop100')
 const date = moment.locale(); ;
@@ -58,12 +60,12 @@ chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
 //Cargar search en tabla top 100 cryptos
 
-// Recuperar elementos del Local Storage y crear historial
+// Recuperar trades del Local Storage y crear historial
 if(localStorage.getItem('tradingResults')) {
    tradingStorage = JSON.parse(localStorage.getItem('tradingResults'))
    tradingStorage.forEach(trading => {
       oldTrades += `
-                     <div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
+                     <div class="col-lg-3 col-md-5 col-10 oldTradeBox"> 
                         <div class="row justify-content-center">
                            <div id="tradeNumbers">
                               <p>Rendimiento de tu trade:</p>
@@ -72,20 +74,27 @@ if(localStorage.getItem('tradingResults')) {
                               <p>Un porcentaje de ${trading.porcentaje}%</p>
                               <p>Y tu nuevo total es $${trading.total}</p>
                               <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
+                              <a href="#header" id="clearOldTrade"><button class="btn-success backButton">Borrar trade</button></a>
                               <p>Calculado ${day}</p>               
                            </div>
                         </div>
                      </div>`;                  
        oldTradingResultsDiv.html(oldTrades);
+       deleteDiv(tradeDescription);
    })
 }
+//Evento borrar trades históricos
+clearAllTrades.click(() => deleteLocalStorage('tradingResults'))
+clearAllTrades.click(() => deleteDiv($('.oldTradeBox')))
+clearAllTrades.click(() => showDiv($('#tradeDescription')));
 
+//Funcion recuperar Holds desde el Local Storage
 if(localStorage.getItem('holdingResults')) {
    holdingStorage = JSON.parse(localStorage.getItem('holdingResults'))
 
    holdingStorage.forEach(holding => {
       oldHolds += `
-                  <div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
+                  <div class="col-lg-3 col-md-5 col-10 oldHoldBox"> 
                      <div class="row justify-content-center">
                         <div id="tradeNumbers">
                            <p>Rendimiento de tu hold:</p>
@@ -94,13 +103,19 @@ if(localStorage.getItem('holdingResults')) {
                            <p>Un porcentaje de ${holding.porcentaje}%</p>
                            <p>Y tu nuevo total es $${holding.total}</p>
                            <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
+                           <a href="#header" id="clearOldHold"><button class="btn-success backButton">Borrar hold</button></a>
                            <p>Calculado ${day}</p>               
                         </div>
                      </div>
                   </div>`;  
       oldHoldingResultsDiv.html(oldHolds);
+      deleteDiv($('#holdDescription'));
    })
 }
+//Evento borrar holds históricos
+clearAllHolds.click(() => deleteLocalStorage('holdingResults'))
+clearAllHolds.click(() => deleteDiv($('.oldHoldBox'))) 
+clearAllHolds.click(() => showDiv($('#holdDescription')));
 //Eventos para carga de imagen y ath de la moneda tradeada.
 tradingCoinChoice.change(() => {
    let image = "";
@@ -154,7 +169,7 @@ tradingCalculateButton.click((e) => {
   e.preventDefault();
   objetctTradeInversion = new tradingInversionCalculate(tradingBuyPrice.val(), tradingSellPrice.val(), tradingQuantity.val());
   inversionDiv = "";
-  inversionDiv += `<div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
+  inversionDiv += `<div class="col-lg-3 col-md-5 col-10 tradeBox"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                              <p>El resultado de tu trade fue:</p>
@@ -163,6 +178,7 @@ tradingCalculateButton.click((e) => {
                              <p>Un porcentaje de ${objetctTradeInversion.percentageInversion()}%</p>
                              <p>Y tu nuevo total es $${objetctTradeInversion.totalBalance()}</p>
                              <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
+                             <a href="#header" id="clearTrade"><button class="btn-success backButton">Borrar trade</button></a>
                              <p>Calculado ${day}</p>               
                           </div>
                        </div>
@@ -179,6 +195,7 @@ tradingCalculateButton.click((e) => {
   objetctTradeInversion.saveonLocalStorage();
   objetctTradeInversion.tradingFillout();
   showDiv(divTradeResult)
+  showDiv($('.oldTradeBox'))
   inversionDiv = "";
 })
 
@@ -187,7 +204,7 @@ holdingCalculateButton.click((e) => {
   e.preventDefault();
   obejctHoldInversion = new tradingInversionCalculate(holdingBuyPrice.val(), $('#currentPrice').text(), holdingQuantity.val());
   inversionDiv = "";
-  inversionDiv += `<div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
+  inversionDiv += `<div class="col-lg-3 col-md-5 col-10 holdBox"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                            <p>El resultado de tu hold fue:</p>
@@ -196,6 +213,7 @@ holdingCalculateButton.click((e) => {
                            <p>Un porcentaje de ${obejctHoldInversion.percentageInversion()}%</p>
                            <p>Y tu nuevo total es $${obejctHoldInversion.totalBalance()}</p>
                            <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
+                           <a href="#header" id="clearHold"><button class="btn-success backButton">Borrar hold</button></a>
                            <p>Calculado ${day}</p>               
                           </div>
                        </div>
@@ -212,5 +230,6 @@ holdingCalculateButton.click((e) => {
    obejctHoldInversion.saveonLocalStorage();
    obejctHoldInversion.holdingFillout();
    showDiv(divHoldResult)
+   showDiv($('.oldHoldBox'))
    inversionDiv = "";   
 })

@@ -80,13 +80,23 @@ input {
 .backButton {
   margin-bottom: 15px;
 }
-#tradeBox {
+.clearAllButtonContainer {
+  text-align: -webkit-center; 
+}
+.clearAll {
+  margin: 15px 0px;
+  border-radius: .25rem;
+}
+.tradeBox, .holdBox, .oldTradeBox, .oldHoldBox {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
   border-radius: 20px;
   margin: 10px;
   padding: 12px 12px 10px 12px;
+}
+#top100DescriptionContainer {
+  text-align: -webkit-center;
 }
 #top100, #historical {
   display: none;
@@ -98,9 +108,8 @@ input {
 }
 .table-responsive { 
   height: 500px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
-
 #contacto {
   margin-top: 10px;
   color: #495057;
@@ -161,6 +170,10 @@ a:hover {
   #mainNav {
     max-width: 157px;
     justify-content: space-between;
+  }
+  .table-responsive { 
+    width: 100%;
+    overflow-x: hidden;
   }
   #athTop, #athDateTop, #max24Top, #min24Top {
     display: none;

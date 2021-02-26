@@ -38,7 +38,6 @@ function chargeTop100() {
 function showDiv(divElement) {
    $(divElement).removeClass('d-none');
 }
-
 //Función para cargar buscador en selects
 function chargeSelect(htmlElement) {
    $(htmlElement).select2()
@@ -47,3 +46,10 @@ function chargeSelect(htmlElement) {
 $(function(){
    $('[data-toggle="tooltip"]').tooltip();
  });
+ //Function delete locate storage
+ function deleteLocalStorage(localKey) {
+   localStorage.removeItem(localKey)
+}
+function deleteDiv(divElement) {
+   $(divElement).addClass('d-none')
+}

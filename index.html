@@ -163,20 +163,39 @@
         </div>
       <div id="historical">  
         <div class="container-fluid">
-          <h3><span class="badge badge-success">Tus trades históricos</span></h3>
+          <div class="row">   
+            <div class="col-lg-4 offset-lg-4">
+              <h3><span class="badge badge-success">Tus trades históricos</span></h3>
+            </div>
+            <div class="col-lg-4 offset-lg-4 clearAllButtonContainer">
+              <button id="clearAllTrades" class="btn-outline-success clearAll">Borrar bandeja de trades</button>
+              <p id="tradeDescription">Todavía no tenés ningún trade guardado o ya decidiste borrarlos. Una vez que calcules y cierres sesión, tus trades estarán aquí.</p>
+            </div>
+          </div>  
           <div id="oldTradingResultsDiv" class="row offset-lg-2 row offset-lg-2 offset-md-1 offset-1  ">
           
           </div>
         </div>
         <div class="container-fluid">
-            <h3><span class="badge badge-success">Tus holds históricos</span></h3>
-            <div id="oldHoldingResultsDiv" class="row offset-lg-2 row offset-lg-2 offset-md-1 offset-1">
-
+          <div class="row">  
+            <div class="col-lg-4 offset-lg-4">
+              <h3><span class="badge badge-success">Tus holds históricos</span></h3>
             </div>
+            <div class="col-lg-4 offset-lg-4 clearAllButtonContainer">  
+              <button id="clearAllHolds" class="btn-outline-success clearAll">Borrar bandeja de holds</button>
+              <p id="holdDescription">Todavía no tenés ningún hold guardado o ya decidiste borrarlos. Una vez que calcules y cierres sesión, tus holds estarán aquí.</p>
+            </div>  
+          </div>  
+          <div id="oldHoldingResultsDiv" class="row offset-lg-2 row offset-lg-2 offset-md-1 offset-1">
+
+          </div>
         </div>
       </div>  
       <div id="top100" class="container">
-        <div class="row col-sm-10 offset-sm-1 col-8">
+        <div id="top100DescriptionContainer" class="row col-lg-8 offset-lg-2">
+          <p>Consultá los datos claves de las 100 cryptomonedas más importantes en cuanto a capitalización de mercado, resultado de multiplicar la cantidad de monedas circulantes por su precio.</p>
+        </div>
+        <div class="row col-sm-10 offset-sm-1 col-12">
           <table class="table table-lg-responsive table-sm-responsive table-responsive">
             <thead class="thead-light">
               <tr>
