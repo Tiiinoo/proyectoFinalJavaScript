@@ -6,10 +6,34 @@
 }
 h1, h2, h3, .description {
   text-align: center;
+  margin-bottom: 15px;
 }
-#mainNav, #graph {
+#titleGraph {
+  text-align: -webkit-center; 
+}
+#graph {
   margin-top: 25px;
-} 
+}
+#mainNav {
+  color: #495057 !important;
+  background-color: #e9ecef !important;
+  border-color: #dee2e6 !important;
+  border-radius: 0.25rem;
+  margin-top: 25px;
+}
+#detail {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  min-width: 160px;
+  padding: .25em .4em;;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  text-align: center;
+  border-radius: .25rem;
+  margin-top: 10px;
+}
 .select2-container {
   width: 80px;
 } 
@@ -26,18 +50,36 @@ h1, h2, h3, .description {
 #tradeNumbers, #holdingNumbers, #footer {
   text-align: -webkit-center; 
 }
-td {
+.tradingTh{
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  max-width: 160px;
+}
+.holdingTh {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  min-width: 160px;
+}
+.tdChoice {
   text-align: center;
+}
+.choiceP {
+  margin-bottom: 0px;
+}
+#holdingImageChoice, #tradingImageChoice {
+  min-height: 61px;
 }
 .select2 {
   width: 80px !important;
 }
+input {
+  max-width: 150px;
+}
 .backButton {
   margin-bottom: 15px;
 }
-/* #tradingResultsDiv, #holdingResultsDiv, #oldTradingResultsDiv, #oldHoldingResultsDiv {
-  padding-left: 70px;
-} */
 #tradeBox {
   color: #495057;
   background-color: #e9ecef;
@@ -45,6 +87,9 @@ td {
   border-radius: 20px;
   margin: 10px;
   padding: 12px 12px 10px 12px;
+}
+#top100, #historical {
+  display: none;
 }
 #contacto {
   margin-top: 10px;
@@ -79,4 +124,38 @@ a:hover {
   border-color: #dee2e6;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+@media only screen and (min-width: 576px) and (max-width:768px) {
+  #mainNav {
+    max-width: 157px;
+    justify-content: space-between;
+  }
+  #athTop, #athDateTop, #max24Top, #min24Top {
+    display: none;
+  }
+  .ath, .athDate, .max24, .min24 {
+    display: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .tradingTh{
+    max-width: 126px;
+  }
+  .holdingTh {
+    max-width: 126px;
+    min-width: 125px;
+  }
+  tdChoice {
+    max-width: 300px;
+  }
+  #mainNav {
+    max-width: 157px;
+    justify-content: space-between;
+  }
+  #athTop, #athDateTop, #max24Top, #min24Top {
+    display: none;
+  }
+  .ath, .athDate, .max24, .min24 {
+  display: none;
+  }
 }

@@ -1,5 +1,11 @@
-router();
-$( window ).bind('hashchange', router)
+//Variables para simular una single page
+let goHome = $('#goHome');
+let goToHistorical = $('#goToHistorical');
+let goTo100Top = $('#goTo100Top');
+let home = $('#home');
+let historical = $('#historical');
+let top100 = $('#top100');
+
 //Variable instanciar el objeto
 let objetctTradeInversion = "";
 let obejctHoldInversion = "";
@@ -13,6 +19,7 @@ let tradingBuyPrice = $('#tradingBuyPrice');
 let tradingSellPrice = $('#tradingSellPrice');
 let tradingQuantity = $('#tradingQuantity');
 let tradingCalculateButton = $('#tradingCalculateButton');
+let divTradeResult = $('#divTradeResult');
 //Variables opciones tabla de holding
 let holdingTable = $('#holdingTable');
 let holdingCoinChoice = $('#holdingCoinChoice');
@@ -29,9 +36,10 @@ let oldTradingResultsDiv = $('#oldTradingResultsDiv');
 let oldHoldingResultsDiv = $('#oldHoldingResultsDiv');
 let newTradeButton = $('#newTradeButton');
 let inversionDiv = "";
+let divHoldResult = $('#divHoldResult');
 let oldTrades = "";
 let oldHolds = "";
-let top100 = $('#top100');
+let top100Table = $('#top100Table');
 const date = moment.locale(); ;
 let day = moment().startOf('minutes').fromNow();
 //Arrays para uso de localstorage
@@ -47,14 +55,14 @@ chargeGeckoData(holdingCoinChoice);
 //Cargar searchers en selects 
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
-//Cargar tabla top 100 cryptos
-chargeTop100();
+// //Cargar tabla top 100 cryptos
+// chargeTop100();
 // Recuperar elementos del Local Storage y crear historial
 if(localStorage.getItem('tradingResults')) {
    tradingStorage = JSON.parse(localStorage.getItem('tradingResults'))
    tradingStorage.forEach(trading => {
       oldTrades += `
-                     <div id="tradeBox" class="col-lg-3"> 
+                     <div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
                         <div class="row justify-content-center">
                            <div id="tradeNumbers">
                               <p>Rendimiento de tu trade:</p>
@@ -76,7 +84,7 @@ if(localStorage.getItem('holdingResults')) {
 
    holdingStorage.forEach(holding => {
       oldHolds += `
-                  <div id="tradeBox" class="col-lg-3"> 
+                  <div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
                      <div class="row justify-content-center">
                         <div id="tradeNumbers">
                            <p>Rendimiento de tu hold:</p>
@@ -107,7 +115,7 @@ tradingCoinChoice.change(() => {
    let athData = "";
    let i = apiDataJSON.find(i => i.symbol.toUpperCase() == tradingCoinChoice.val())
    athData = i.ath
-   ath = `<p>${athData}</p>`;
+   ath = `<p class="choiceP">${athData}</p>`;
    tradingATH.html(ath);
    }
 );
@@ -126,7 +134,7 @@ holdingCoinChoice.change(() => {
    let athData = "";
    let i = apiDataJSON.find(i => i.symbol.toUpperCase() == holdingCoinChoice.val())
    athData = i.ath
-   ath = `<p>${athData}</p>`;
+   ath = `<p class="choiceP">${athData}</p>`;
    holdingATH.html(ath);
    }
 );
@@ -135,7 +143,7 @@ holdingCoinChoice.change(() => {
    let currentPriceData = "";
    let i = apiDataJSON.find(i => i.symbol.toUpperCase() == holdingCoinChoice.val())
    currentPriceData = i.current_price
-   currentPrice = `<p id="currentPrice">${currentPriceData}</p>`;
+   currentPrice = `<p id="currentPrice" class="choiceP">${currentPriceData}</p>`;
    holdingPrice.html(currentPrice);
    }
 );
@@ -145,7 +153,7 @@ tradingCalculateButton.click((e) => {
   e.preventDefault();
   objetctTradeInversion = new tradingInversionCalculate(tradingBuyPrice.val(), tradingSellPrice.val(), tradingQuantity.val());
   inversionDiv = "";
-  inversionDiv += `<div id="tradeBox" class="col-lg-3"> 
+  inversionDiv += `<div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                              <p>El resultado de tu trade fue:</p>
@@ -169,6 +177,7 @@ tradingCalculateButton.click((e) => {
                      })
   objetctTradeInversion.saveonLocalStorage();
   objetctTradeInversion.tradingFillout();
+  showDiv(divTradeResult)
   inversionDiv = "";
 })
 
@@ -177,7 +186,7 @@ holdingCalculateButton.click((e) => {
   e.preventDefault();
   obejctHoldInversion = new tradingInversionCalculate(holdingBuyPrice.val(), $('#currentPrice').text(), holdingQuantity.val());
   inversionDiv = "";
-  inversionDiv += `<div id="tradeBox" class="col-lg-3"> 
+  inversionDiv += `<div id="tradeBox" class="col-lg-3 col-md-5 col-10"> 
                        <div class="row justify-content-center">
                           <div id="tradeNumbers">
                            <p>El resultado de tu hold fue:</p>
@@ -201,5 +210,6 @@ holdingCalculateButton.click((e) => {
                      })
    obejctHoldInversion.saveonLocalStorage();
    obejctHoldInversion.holdingFillout();
+   showDiv(divHoldResult)
    inversionDiv = "";   
 })

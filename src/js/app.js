@@ -19,43 +19,31 @@ function chargeTop100() {
    for (let i in apiDataJSON) {
          table += `<tr>
                      <th scope="row" class="marketRank">${apiDataJSON[i].market_cap_rank}</th>
-                     <td class="symbol">${apiDataJSON[i].symbol.toUpperCase()}</td>
-                     <td class="image"><img class="imageChoice" src="${apiDataJSON[i].image}"></td>
-                     <td class="price">${apiDataJSON[i].current_price}</td>
-                     <td class="ath">${apiDataJSON[i].ath}</td>
-                     <td class="athDate">${apiDataJSON[i].ath_date}</td>
-                     <td class="max24">${apiDataJSON[i].high_24h}</td>
-                     <td class="min24">${apiDataJSON[i].low_24h}</td>
-                     <td class="24h">${apiDataJSON[i].price_change_24h}</td>
+                     <td class="symbol tdTop">${apiDataJSON[i].symbol.toUpperCase()}</td>
+                     <td class="image tdTop"><img class="imageChoice" src="${apiDataJSON[i].image}"></td>
+                     <td class="price tdTop">${apiDataJSON[i].current_price}</td>
+                     <td class="ath tdTop data-toggle="tooltip"
+                     data-placement="top" title="Máximo precio histórico">${apiDataJSON[i].ath}</td>
+                     <td class="athDate tdTop">${apiDataJSON[i].ath_date}</td>
+                     <td class="max24 tdTop">${apiDataJSON[i].high_24h}</td>
+                     <td class="min24 tdTop">${apiDataJSON[i].low_24h}</td>
+                     <td class="24h tdTop">${apiDataJSON[i].price_change_percentage_24h.toFixed(2)}%</td>
                   </tr>`;
       };
-      top100.append(table);
+      top100Table.append(table);
       return table;     
+}
+
+//Función mostrar trades actuales
+function showDiv(divElement) {
+   $(divElement).removeClass('d-none');
 }
 
 //Función para cargar buscador en selects
 function chargeSelect(htmlElement) {
    $(htmlElement).select2();
 };
-
-
-//Functions One Page setter.
-const parseLocation = function() {
-   return location.hash.slice(1).toLocaleLowerCase() || "/"
-}
-
-const findComponent = function(path, routes) {
-   return routes.find(route => route.path.match(new RegExp(`^\\${path}$`, 'gm'))) || undefined
-   
-}
-
-function router() {
-   const path = parseLocation()
-   const {component = ComponenteError} = findComponent(path, routes) || {};
-   $('#singlePage').html(component.render());
-}
-
-// $( document ).ready(router)
-// document.addEventListener('DOMContentLoaded', router)
-// $( window ).bind('hashchange', router)
-// window.addEventListener('hashchange', router)
+//Función bootstrap tooltips
+$(function(){
+   $('[data-toggle="tooltip"]').tooltip();
+ });
