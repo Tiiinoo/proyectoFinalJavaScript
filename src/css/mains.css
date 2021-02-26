@@ -91,6 +91,16 @@ input {
 #top100, #historical {
   display: none;
 }
+.thTop {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.table-responsive { 
+  height: 500px;
+  overflow: scroll;
+}
+
 #contacto {
   margin-top: 10px;
   color: #495057;

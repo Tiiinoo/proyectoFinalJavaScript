@@ -40,6 +40,7 @@ let divHoldResult = $('#divHoldResult');
 let oldTrades = "";
 let oldHolds = "";
 let top100Table = $('#top100Table');
+let tokenTop100 = $('#tokenTop100')
 const date = moment.locale(); ;
 let day = moment().startOf('minutes').fromNow();
 //Arrays para uso de localstorage
@@ -55,8 +56,8 @@ chargeGeckoData(holdingCoinChoice);
 //Cargar searchers en selects 
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
-// //Cargar tabla top 100 cryptos
-// chargeTop100();
+//Cargar search en tabla top 100 cryptos
+
 // Recuperar elementos del Local Storage y crear historial
 if(localStorage.getItem('tradingResults')) {
    tradingStorage = JSON.parse(localStorage.getItem('tradingResults'))

@@ -41,7 +41,7 @@ function showDiv(divElement) {
 
 //Función para cargar buscador en selects
 function chargeSelect(htmlElement) {
-   $(htmlElement).select2();
+   $(htmlElement).select2()
 };
 //Función bootstrap tooltips
 $(function(){
