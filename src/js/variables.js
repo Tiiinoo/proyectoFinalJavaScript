@@ -30,6 +30,8 @@ let holdingPrice = $('#holdingPrice');
 let holdingQuantity = $('#holdingQuantity');
 let holdingCalculateButton = $('#holdingCalculateButton');
 //Variables div de resultados
+let divSaveResult = $('#divSaveResult')
+let saveResultsButton = $('#saveResultsButton')
 let tradingResultsDiv = $('#tradingResultsDiv');
 let holdingResultsDiv = $('#holdingResultsDiv');
 let oldTradingResultsDiv = $('#oldTradingResultsDiv');
@@ -79,7 +81,6 @@ if(localStorage.getItem('tradingResults')) {
                               <p>Un porcentaje de ${trading.porcentaje}%</p>
                               <p>Y tu nuevo total es $${trading.total}</p>
                               <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
-                              <a href="#header" id="clearOldTrade"><button class="btn-success backButton">Borrar trade</button></a>
                               <p>${trading.date}</p>            
                            </div>
                         </div>
@@ -108,7 +109,6 @@ if(localStorage.getItem('holdingResults')) {
                            <p>Un porcentaje de ${holding.porcentaje}%</p>
                            <p>Y tu nuevo total es $${holding.total}</p>
                            <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
-                           <a href="#header" id="clearOldHold"><button class="btn-success backButton">Borrar hold</button></a>
                            <p>${holding.date}</p>                
                         </div>
                      </div>
@@ -182,8 +182,7 @@ tradingCalculateButton.click((e) => {
                              <p>Con una diferencia de $${objetctTradeInversion.retornoInversion()}</p>
                              <p>Un porcentaje de ${objetctTradeInversion.percentageInversion()}%</p>
                              <p>Y tu nuevo total es $${objetctTradeInversion.totalBalance()}</p>
-                             <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
-                             <a href="#header"><button class="btn-success clearTrade">Borrar trade</button></a>
+                             <a href="#tradingContainer"><button class="btn-success backButton">Nuevo trade</button></a>
                              <p class="calculatedDate">Calculado el ${day}/${month}/${year}-${hour}:${minutes} hs</p>          
                           </div>
                        </div>
@@ -201,6 +200,7 @@ tradingCalculateButton.click((e) => {
   objetctTradeInversion.saveonLocalStorage();
   objetctTradeInversion.tradingFillout();
   showDiv(divTradeResult)
+  showDiv(divSaveResult)
   showDiv($('.oldTradeBox'))
   caculateDone('¡Trade calculado!', 5000)
   inversionDiv = "";
@@ -219,8 +219,7 @@ holdingCalculateButton.click((e) => {
                            <p>Con una diferencia de $${obejctHoldInversion.retornoInversion()}</p>
                            <p>Un porcentaje de ${obejctHoldInversion.percentageInversion()}%</p>
                            <p>Y tu nuevo total es $${obejctHoldInversion.totalBalance()}</p>
-                           <a href="#" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
-                           <a href="#"><button class="btn-success clearHold">Borrar hold</button></a>
+                           <a href="#holdingContainer"><button class="btn-success backButton">Nuevo hold</button></a>
                            <p class="calculatedDate">Calculado el ${day}/${month}/${year}-${hour}:${minutes} hs</p>               
                           </div>
                        </div>
@@ -238,8 +237,13 @@ holdingCalculateButton.click((e) => {
    obejctHoldInversion.saveonLocalStorage();
    obejctHoldInversion.holdingFillout();
    showDiv(divHoldResult)
+   showDiv(divSaveResult)
    showDiv($('.oldHoldBox'))
    caculateDone('¡Hold calculado!', 5000)
    inversionDiv = "";   
 })
+//Evento para guardar resultados
+saveResultsButton.click(() => {
+   location.reload();
+ });
 

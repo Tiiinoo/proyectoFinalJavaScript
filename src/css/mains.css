@@ -80,6 +80,9 @@ input {
 .backButton {
   margin-bottom: 15px;
 }
+#divSaveResult {
+  margin: 15px 0px 25px 0px;
+}
 .clearAllButtonContainer {
   text-align: -webkit-center; 
 }

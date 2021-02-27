@@ -33,7 +33,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a id="goToHistorical" class="nav-link" href="#">Historical</a>
+                    <a id="goToHistorical" class="nav-link" href="#">Historial</a>
                   </li>
                   <li class="nav-item active">
                     <a id="goTo100Top" class="nav-link" href="#">100 top cryptos</a>
@@ -146,21 +146,26 @@
                 </tbody>
               </table>
             </div>
-          </div>  
-        </div>
-          <div id="divTradeResult" class="container-fluid d-none">
-            <h3><span class="badge badge-success">Tus trades</span></h3>
-            <div id="tradingResultsDiv" class="row offset-lg-2 offset-md-1 offset-1">
-
-            </div>
-          </div>
-          <div id="divHoldResult" class="container-fluid d-none">
-            <h3><span class="badge badge-success">Tus holds</span></h3>   
-            <div id="holdingResultsDiv" class="row offset-lg-2 offset-md-1 offset-1">
-
-            </div>
           </div>
         </div>
+        <div id="divSaveResult" class="container-fluid d-none">
+          <div id="saveResultsDiv" class="row justify-content-center">
+            <button id="saveResultsButton" class="btn-outline-success calculateButton">Guardá tus resultados</button>
+          </div>
+        </div>
+        <div id="divTradeResult" class="container-fluid d-none">
+          <h3><span class="badge badge-success">Tus trades</span></h3>
+          <div id="tradingResultsDiv" class="row offset-lg-2 offset-md-1 offset-1">
+
+          </div>
+        </div>
+        <div id="divHoldResult" class="container-fluid d-none">
+          <h3><span class="badge badge-success">Tus holds</span></h3>   
+          <div id="holdingResultsDiv" class="row offset-lg-2 offset-md-1 offset-1">
+
+          </div>
+        </div>
+      </div> 
       <div id="historical">  
         <div class="container-fluid">
           <div class="row">   
@@ -169,7 +174,7 @@
             </div>
             <div class="col-lg-4 offset-lg-4 clearAllButtonContainer">
               <button id="clearAllTrades" class="btn-outline-success clearAll">Borrar bandeja de trades</button>
-              <p id="tradeDescription">Todavía no tenés ningún trade guardado o ya decidiste borrarlos. Una vez que calcules y cierres sesión, tus trades estarán aquí.</p>
+              <p id="tradeDescription">Todavía no tenés ningún trade guardado o ya decidiste borrarlos. Una vez que calcules y refresques o cierres la página, tus trades estarán aquí.</p>
             </div>
           </div>  
           <div id="oldTradingResultsDiv" class="row offset-lg-2 row offset-lg-2 offset-md-1 offset-1  ">
@@ -183,7 +188,7 @@
             </div>
             <div class="col-lg-4 offset-lg-4 clearAllButtonContainer">  
               <button id="clearAllHolds" class="btn-outline-success clearAll">Borrar bandeja de holds</button>
-              <p id="holdDescription">Todavía no tenés ningún hold guardado o ya decidiste borrarlos. Una vez que calcules y cierres sesión, tus holds estarán aquí.</p>
+              <p id="holdDescription">Todavía no tenés ningún hold guardado o ya decidiste borrarlos. Una vez que calcules y refresques o cierres la página, tus holds estarán aquí.</p>
             </div>  
           </div>  
           <div id="oldHoldingResultsDiv" class="row offset-lg-2 row offset-lg-2 offset-md-1 offset-1">
