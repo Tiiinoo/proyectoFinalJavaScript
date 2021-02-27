@@ -3,7 +3,7 @@ Control your gains, es mi proyecto para el curso de Javascript en Coderhouse.
 Mi idea es que los usuarios de mi sitio puedan llevar una gestión ordenada de sus inversiones en criptomonedas.
 Mediante datos que ingrese el usuario, buscaré obtener, mediante APYS de distintas páginas, el rendimiento de las inversiones de estos.
 ## Secciones
-El sitio, en un principio, debería contener 3 secciones:
+El sitio, contiene 3 secciones:
 ### Home
 Aquí el usuario podrá calcular el beneficio que obtuvo sobre un trade (cuando compro y vendió sus cryptomonedas) o el rendimiento actual de su hold (cuando compró pero aún mantiene la cryptomonedas en su poder). También tiene la posibilidad de guardar sus resultados ordenados por fecha, para llevar una gestión ordenada de sus inversiones.
 ### Historial
