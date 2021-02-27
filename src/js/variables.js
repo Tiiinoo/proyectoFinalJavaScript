@@ -43,8 +43,13 @@ let clearAllTrades = $('#clearAllTrades');
 let clearAllHolds = $('#clearAllHolds');
 let top100Table = $('#top100Table');
 let tokenTop100 = $('#tokenTop100')
-const date = moment.locale(); ;
-let day = moment().startOf('minutes').fromNow();
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+let hour = date.getHours();
+let minutes = date.getMinutes();
+let seconds = date.getSeconds();
 //Arrays para uso de localstorage
 let tradingStorage = [];
 let holdingStorage = [];
@@ -75,7 +80,7 @@ if(localStorage.getItem('tradingResults')) {
                               <p>Y tu nuevo total es $${trading.total}</p>
                               <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
                               <a href="#header" id="clearOldTrade"><button class="btn-success backButton">Borrar trade</button></a>
-                              <p>Calculado ${day}</p>               
+                              <p>${trading.date}</p>            
                            </div>
                         </div>
                      </div>`;                  
@@ -104,7 +109,7 @@ if(localStorage.getItem('holdingResults')) {
                            <p>Y tu nuevo total es $${holding.total}</p>
                            <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
                            <a href="#header" id="clearOldHold"><button class="btn-success backButton">Borrar hold</button></a>
-                           <p>Calculado ${day}</p>               
+                           <p>${holding.date}</p>                
                         </div>
                      </div>
                   </div>`;  
@@ -178,8 +183,8 @@ tradingCalculateButton.click((e) => {
                              <p>Un porcentaje de ${objetctTradeInversion.percentageInversion()}%</p>
                              <p>Y tu nuevo total es $${objetctTradeInversion.totalBalance()}</p>
                              <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo trade</button></a>
-                             <a href="#header" id="clearTrade"><button class="btn-success backButton">Borrar trade</button></a>
-                             <p>Calculado ${day}</p>               
+                             <a href="#header"><button class="btn-success clearTrade">Borrar trade</button></a>
+                             <p class="calculatedDate">Calculado el ${day}/${month}/${year}-${hour}:${minutes} hs</p>          
                           </div>
                        </div>
                     </div>`;                  
@@ -190,12 +195,14 @@ tradingCalculateButton.click((e) => {
                         "buy" : objetctTradeInversion.compraInicial(),
                         "retorno" : objetctTradeInversion.retornoInversion(),
                         "porcentaje" : objetctTradeInversion.percentageInversion(),
-                        "total" : objetctTradeInversion.totalBalance()
+                        "total" : objetctTradeInversion.totalBalance(),
+                        "date" : this.$('.calculatedDate').text()
                      })
   objetctTradeInversion.saveonLocalStorage();
   objetctTradeInversion.tradingFillout();
   showDiv(divTradeResult)
   showDiv($('.oldTradeBox'))
+  caculateDone('¡Trade calculado!', 5000)
   inversionDiv = "";
 })
 
@@ -212,9 +219,9 @@ holdingCalculateButton.click((e) => {
                            <p>Con una diferencia de $${obejctHoldInversion.retornoInversion()}</p>
                            <p>Un porcentaje de ${obejctHoldInversion.percentageInversion()}%</p>
                            <p>Y tu nuevo total es $${obejctHoldInversion.totalBalance()}</p>
-                           <a href="#header" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
-                           <a href="#header" id="clearHold"><button class="btn-success backButton">Borrar hold</button></a>
-                           <p>Calculado ${day}</p>               
+                           <a href="#" id="newTradeButton"><button class="btn-success backButton">Nuevo hold</button></a>
+                           <a href="#"><button class="btn-success clearHold">Borrar hold</button></a>
+                           <p class="calculatedDate">Calculado el ${day}/${month}/${year}-${hour}:${minutes} hs</p>               
                           </div>
                        </div>
                     </div>`;                  
@@ -225,11 +232,14 @@ holdingCalculateButton.click((e) => {
                         "buy" : obejctHoldInversion.compraInicial(),
                         "retorno" : obejctHoldInversion.retornoInversion(),
                         "porcentaje" : obejctHoldInversion.percentageInversion(),
-                        "total" : obejctHoldInversion.totalBalance()
+                        "total" : obejctHoldInversion.totalBalance(),
+                        "date" : this.$('.calculatedDate').text()
                      })
    obejctHoldInversion.saveonLocalStorage();
    obejctHoldInversion.holdingFillout();
    showDiv(divHoldResult)
    showDiv($('.oldHoldBox'))
+   caculateDone('¡Hold calculado!', 5000)
    inversionDiv = "";   
 })
+

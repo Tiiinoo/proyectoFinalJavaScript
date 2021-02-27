@@ -17,14 +17,14 @@ function chargeGeckoData(htmlElement) {
 
 function chargeTop100() {
    for (let i in apiDataJSON) {
-         table += `<tr>
-                     <th scope="row" class="marketRank">${apiDataJSON[i].market_cap_rank}</th>
+         table += `<tr class="trTop">
+                     <th scope="row" class="marketRank tdTop">${apiDataJSON[i].market_cap_rank}</th>
                      <td class="symbol tdTop">${apiDataJSON[i].symbol.toUpperCase()}</td>
-                     <td class="image tdTop"><img class="imageChoice" src="${apiDataJSON[i].image}"></td>
+                     <td class="image tdTop"><img class="imageTop" src="${apiDataJSON[i].image}"></td>
                      <td class="price tdTop">${apiDataJSON[i].current_price}</td>
                      <td class="ath tdTop data-toggle="tooltip"
                      data-placement="top" title="Máximo precio histórico">${apiDataJSON[i].ath}</td>
-                     <td class="athDate tdTop">${apiDataJSON[i].ath_date}</td>
+                     <td class="athDate tdTop">${apiDataJSON[i].ath_date.slice(0,10)}</td>
                      <td class="max24 tdTop">${apiDataJSON[i].high_24h}</td>
                      <td class="min24 tdTop">${apiDataJSON[i].low_24h}</td>
                      <td class="24h tdTop">${apiDataJSON[i].price_change_percentage_24h.toFixed(2)}%</td>
@@ -52,4 +52,19 @@ $(function(){
 }
 function deleteDiv(divElement) {
    $(divElement).addClass('d-none')
+}
+//Función de notificación de cálculo realizado
+function caculateDone(message, time) {
+   if (time === undefined) time = 4000;
+   $("body").append(`<div class="calculateReady"></div>`);
+   $(".calculateReady").text(message);
+   $(".calculateReady").animate({
+      opacity: 1 
+   }, 500, function () { 
+         $(".calculateReady").animate({ 
+            opacity: 0 
+         }, time, function () {
+               $(this).remove();
+            })
+   })
 }

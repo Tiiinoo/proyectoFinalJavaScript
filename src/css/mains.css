@@ -106,9 +106,28 @@ input {
   top: 0;
   z-index: 10;
 }
+.imageTop {
+  width: 30px;
+  height: auto;
+}
 .table-responsive { 
   height: 500px;
   overflow-y: scroll;
+}
+.calculateReady{
+  position: absolute;
+  z-index: 32000;
+  top: 800px;
+  padding: 5px;
+  width: max-content;
+  margin-left: 565px;
+  text-align: center;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  border-radius: .25rem;
+  color: #28a745;
+  opacity: 0;
+  font-size: 1rem;
 }
 #contacto {
   margin-top: 10px;
@@ -155,6 +174,9 @@ a:hover {
   .ath, .athDate, .max24, .min24 {
     display: none;
   }
+  .calculateReady {
+    display: none;
+  }
 }
 @media only screen and (max-width: 576px) {
   .tradingTh{
@@ -180,5 +202,8 @@ a:hover {
   }
   .ath, .athDate, .max24, .min24 {
   display: none;
+  }
+  .calculateReady {
+    display: none;
   }
 }
