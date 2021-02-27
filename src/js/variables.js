@@ -65,8 +65,6 @@ chargeGeckoData(holdingCoinChoice);
 //Cargar searchers en selects 
 chargeSelect(tradingCoinChoice)
 chargeSelect(holdingCoinChoice)
-//Cargar search en tabla top 100 cryptos
-
 // Recuperar trades del Local Storage y crear historial
 if(localStorage.getItem('tradingResults')) {
    tradingStorage = JSON.parse(localStorage.getItem('tradingResults'))
